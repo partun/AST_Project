@@ -5,7 +5,7 @@
  *
  * @author Jibesh Patra
  */
-const Octokit = require('@octokit/rest');
+const { Octokit } = require('@octokit/rest');
 const path = require('path');
 const fileutils = require('./fileoperations');
 
@@ -14,19 +14,19 @@ const fs = require('fs');
 class Scrapper {
     constructor(outfile, top_n) {
         this.octokit = new Octokit(
-            {
-                'auth': {
-                    username: 'SET_USERNAME',
-                    password: 'SET_PASSWORD'
-                }
-            }
+            // {
+            //     auth: {
+            //         username: 'SET_USERNAME',
+            //         password: 'SET_PASSWORD'
+            //     }
+            // }
         );
         this.outfile = path.join(process.cwd(), outfile);
         this.top_n = top_n;
 
     }
 
-    async getRepositoriesParseCommits({language, page, q_no}) {
+    async getRepositoriesParseCommits({ language, page, q_no }) {
         console.log("---------------- Current page --------------", page);
         let query = ['fix', 'bug', 'error', 'issue', 'squash'];
         let topJSrepos = [];
@@ -35,7 +35,7 @@ class Scrapper {
              * Search for repositories of a particular language.
              */
             const result = await this.octokit.search.repos({
-                q: language,
+                q: `language:${language}`,
                 sort: 'stars',
                 order: 'desc',
                 per_page: this.top_n, // max → 100
@@ -45,12 +45,16 @@ class Scrapper {
             if (result.status === 200) {
                 let available_repos = result.data.total_count;
 
-                console.log(`Got ${result.data.items.length} JavaScript repositories on page ${page}`);
+                console.log(`Got ${result.data.items.length} ${language} repositories on page ${page}`);
                 for (let i = 0; i < result.data.items.length; i++) {
                     let repo_name = result.data.items[i].full_name;
 
                     let repo = result.data.items[i];
-                    topJSrepos.push({'clone_url': repo.clone_url, 'ssh_url': repo.ssh_url});
+                    topJSrepos.push({
+                        'clone_url': repo.clone_url,
+                        'ssh_url': repo.ssh_url,
+                        'stars': repo.stargazers_count
+                    });
                     // let sshUrl = repo.ssh_url;
                     // console.log(repo.clone_url);
                     // console.log(repo.ssh_url);
@@ -119,8 +123,8 @@ class Scrapper {
 
                 let outfile = this.outfile;
                 let out = [];
-                if (fileutils.available(outfile))
-                    out = JSON.parse(fs.readFileSync(outfile, 'utf8'));
+                // if (fileutils.available(outfile))
+                //     out = JSON.parse(fs.readFileSync(outfile, 'utf8'));
 
                 for (let rep of topJSrepos) {
                     out.push(rep);

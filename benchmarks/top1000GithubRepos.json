@@ -1,0 +1,802 @@
+[
+    {
+        "clone_url": "https://github.com/freeCodeCamp/freeCodeCamp.git",
+        "ssh_url": "git@github.com:freeCodeCamp/freeCodeCamp.git"
+    },
+    {
+        "clone_url": "https://github.com/vuejs/vue.git",
+        "ssh_url": "git@github.com:vuejs/vue.git"
+    },
+    {
+        "clone_url": "https://github.com/facebook/react.git",
+        "ssh_url": "git@github.com:facebook/react.git"
+    },
+    {
+        "clone_url": "https://github.com/twbs/bootstrap.git",
+        "ssh_url": "git@github.com:twbs/bootstrap.git"
+    },
+    {
+        "clone_url": "https://github.com/getify/You-Dont-Know-JS.git",
+        "ssh_url": "git@github.com:getify/You-Dont-Know-JS.git"
+    },
+    {
+        "clone_url": "https://github.com/trekhleb/javascript-algorithms.git",
+        "ssh_url": "git@github.com:trekhleb/javascript-algorithms.git"
+    },
+    {
+        "clone_url": "https://github.com/airbnb/javascript.git",
+        "ssh_url": "git@github.com:airbnb/javascript.git"
+    },
+    {
+        "clone_url": "https://github.com/electron/electron.git",
+        "ssh_url": "git@github.com:electron/electron.git"
+    },
+    {
+        "clone_url": "https://github.com/30-seconds/30-seconds-of-code.git",
+        "ssh_url": "git@github.com:30-seconds/30-seconds-of-code.git"
+    },
+    {
+        "clone_url": "https://github.com/axios/axios.git",
+        "ssh_url": "git@github.com:axios/axios.git"
+    },
+    {
+        "clone_url": "https://github.com/justjavac/free-programming-books-zh_CN.git",
+        "ssh_url": "git@github.com:justjavac/free-programming-books-zh_CN.git"
+    },
+    {
+        "clone_url": "https://github.com/nodejs/node.git",
+        "ssh_url": "git@github.com:nodejs/node.git"
+    },
+    {
+        "clone_url": "https://github.com/denoland/deno.git",
+        "ssh_url": "git@github.com:denoland/deno.git"
+    },
+    {
+        "clone_url": "https://github.com/mrdoob/three.js.git",
+        "ssh_url": "git@github.com:mrdoob/three.js.git"
+    },
+    {
+        "clone_url": "https://github.com/angular/angular.git",
+        "ssh_url": "git@github.com:angular/angular.git"
+    },
+    {
+        "clone_url": "https://github.com/microsoft/TypeScript.git",
+        "ssh_url": "git@github.com:microsoft/TypeScript.git"
+    },
+    {
+        "clone_url": "https://github.com/mui/material-ui.git",
+        "ssh_url": "git@github.com:mui/material-ui.git"
+    },
+    {
+        "clone_url": "https://github.com/goldbergyoni/nodebestpractices.git",
+        "ssh_url": "git@github.com:goldbergyoni/nodebestpractices.git"
+    },
+    {
+        "clone_url": "https://github.com/storybookjs/storybook.git",
+        "ssh_url": "git@github.com:storybookjs/storybook.git"
+    },
+    {
+        "clone_url": "https://github.com/practical-tutorials/project-based-learning.git",
+        "ssh_url": "git@github.com:practical-tutorials/project-based-learning.git"
+    },
+    {
+        "clone_url": "https://github.com/ryanmcdermott/clean-code-javascript.git",
+        "ssh_url": "git@github.com:ryanmcdermott/clean-code-javascript.git"
+    },
+    {
+        "clone_url": "https://github.com/webpack/webpack.git",
+        "ssh_url": "git@github.com:webpack/webpack.git"
+    },
+    {
+        "clone_url": "https://github.com/thedaviddias/Front-End-Checklist.git",
+        "ssh_url": "git@github.com:thedaviddias/Front-End-Checklist.git"
+    },
+    {
+        "clone_url": "https://github.com/reduxjs/redux.git",
+        "ssh_url": "git@github.com:reduxjs/redux.git"
+    },
+    {
+        "clone_url": "https://github.com/atom/atom.git",
+        "ssh_url": "git@github.com:atom/atom.git"
+    },
+    {
+        "clone_url": "https://github.com/expressjs/express.git",
+        "ssh_url": "git@github.com:expressjs/express.git"
+    },
+    {
+        "clone_url": "https://github.com/chartjs/Chart.js.git",
+        "ssh_url": "git@github.com:chartjs/Chart.js.git"
+    },
+    {
+        "clone_url": "https://github.com/jquery/jquery.git",
+        "ssh_url": "git@github.com:jquery/jquery.git"
+    },
+    {
+        "clone_url": "https://github.com/lodash/lodash.git",
+        "ssh_url": "git@github.com:lodash/lodash.git"
+    },
+    {
+        "clone_url": "https://github.com/h5bp/html5-boilerplate.git",
+        "ssh_url": "git@github.com:h5bp/html5-boilerplate.git"
+    },
+    {
+        "clone_url": "https://github.com/ElemeFE/element.git",
+        "ssh_url": "git@github.com:ElemeFE/element.git"
+    },
+    {
+        "clone_url": "https://github.com/leonardomso/33-js-concepts.git",
+        "ssh_url": "git@github.com:leonardomso/33-js-concepts.git"
+    },
+    {
+        "clone_url": "https://github.com/azl397985856/leetcode.git",
+        "ssh_url": "git@github.com:azl397985856/leetcode.git"
+    },
+    {
+        "clone_url": "https://github.com/ionic-team/ionic-framework.git",
+        "ssh_url": "git@github.com:ionic-team/ionic-framework.git"
+    },
+    {
+        "clone_url": "https://github.com/moment/moment.git",
+        "ssh_url": "git@github.com:moment/moment.git"
+    },
+    {
+        "clone_url": "https://github.com/nestjs/nest.git",
+        "ssh_url": "git@github.com:nestjs/nest.git"
+    },
+    {
+        "clone_url": "https://github.com/microsoft/Web-Dev-For-Beginners.git",
+        "ssh_url": "git@github.com:microsoft/Web-Dev-For-Beginners.git"
+    },
+    {
+        "clone_url": "https://github.com/DopplerHQ/awesome-interview-questions.git",
+        "ssh_url": "git@github.com:DopplerHQ/awesome-interview-questions.git"
+    },
+    {
+        "clone_url": "https://github.com/strapi/strapi.git",
+        "ssh_url": "git@github.com:strapi/strapi.git"
+    },
+    {
+        "clone_url": "https://github.com/sindresorhus/awesome-nodejs.git",
+        "ssh_url": "git@github.com:sindresorhus/awesome-nodejs.git"
+    },
+    {
+        "clone_url": "https://github.com/meteor/meteor.git",
+        "ssh_url": "git@github.com:meteor/meteor.git"
+    },
+    {
+        "clone_url": "https://github.com/lydiahallie/javascript-questions.git",
+        "ssh_url": "git@github.com:lydiahallie/javascript-questions.git"
+    },
+    {
+        "clone_url": "https://github.com/prettier/prettier.git",
+        "ssh_url": "git@github.com:prettier/prettier.git"
+    },
+    {
+        "clone_url": "https://github.com/juliangarnier/anime.git",
+        "ssh_url": "git@github.com:juliangarnier/anime.git"
+    },
+    {
+        "clone_url": "https://github.com/babel/babel.git",
+        "ssh_url": "git@github.com:babel/babel.git"
+    },
+    {
+        "clone_url": "https://github.com/yarnpkg/yarn.git",
+        "ssh_url": "git@github.com:yarnpkg/yarn.git"
+    },
+    {
+        "clone_url": "https://github.com/parcel-bundler/parcel.git",
+        "ssh_url": "git@github.com:parcel-bundler/parcel.git"
+    },
+    {
+        "clone_url": "https://github.com/TryGhost/Ghost.git",
+        "ssh_url": "git@github.com:TryGhost/Ghost.git"
+    },
+    {
+        "clone_url": "https://github.com/nwjs/nw.js.git",
+        "ssh_url": "git@github.com:nwjs/nw.js.git"
+    },
+    {
+        "clone_url": "https://github.com/Dogfalo/materialize.git",
+        "ssh_url": "git@github.com:Dogfalo/materialize.git"
+    },
+    {
+        "clone_url": "https://github.com/facebook/jest.git",
+        "ssh_url": "git@github.com:facebook/jest.git"
+    },
+    {
+        "clone_url": "https://github.com/vercel/hyper.git",
+        "ssh_url": "git@github.com:vercel/hyper.git"
+    },
+    {
+        "clone_url": "https://github.com/mozilla/pdf.js.git",
+        "ssh_url": "git@github.com:mozilla/pdf.js.git"
+    },
+    {
+        "clone_url": "https://github.com/microsoft/playwright.git",
+        "ssh_url": "git@github.com:microsoft/playwright.git"
+    },
+    {
+        "clone_url": "https://github.com/FreeCodeCampChina/freecodecamp.cn.git",
+        "ssh_url": "git@github.com:FreeCodeCampChina/freecodecamp.cn.git"
+    },
+    {
+        "clone_url": "https://github.com/dcloudio/uni-app.git",
+        "ssh_url": "git@github.com:dcloudio/uni-app.git"
+    },
+    {
+        "clone_url": "https://github.com/pixijs/pixijs.git",
+        "ssh_url": "git@github.com:pixijs/pixijs.git"
+    },
+    {
+        "clone_url": "https://github.com/discourse/discourse.git",
+        "ssh_url": "git@github.com:discourse/discourse.git"
+    },
+    {
+        "clone_url": "https://github.com/hexojs/hexo.git",
+        "ssh_url": "git@github.com:hexojs/hexo.git"
+    },
+    {
+        "clone_url": "https://github.com/vuetifyjs/vuetify.git",
+        "ssh_url": "git@github.com:vuetifyjs/vuetify.git"
+    },
+    {
+        "clone_url": "https://github.com/yangshun/front-end-interview-handbook.git",
+        "ssh_url": "git@github.com:yangshun/front-end-interview-handbook.git"
+    },
+    {
+        "clone_url": "https://github.com/adobe/brackets.git",
+        "ssh_url": "git@github.com:adobe/brackets.git"
+    },
+    {
+        "clone_url": "https://github.com/Leaflet/Leaflet.git",
+        "ssh_url": "git@github.com:Leaflet/Leaflet.git"
+    },
+    {
+        "clone_url": "https://github.com/alvarotrigo/fullPage.js.git",
+        "ssh_url": "git@github.com:alvarotrigo/fullPage.js.git"
+    },
+    {
+        "clone_url": "https://github.com/videojs/video.js.git",
+        "ssh_url": "git@github.com:videojs/video.js.git"
+    },
+    {
+        "clone_url": "https://github.com/facebook/docusaurus.git",
+        "ssh_url": "git@github.com:facebook/docusaurus.git"
+    },
+    {
+        "clone_url": "https://github.com/lerna/lerna.git",
+        "ssh_url": "git@github.com:lerna/lerna.git"
+    },
+    {
+        "clone_url": "https://github.com/RocketChat/Rocket.Chat.git",
+        "ssh_url": "git@github.com:RocketChat/Rocket.Chat.git"
+    },
+    {
+        "clone_url": "https://github.com/zenorocha/clipboard.js.git",
+        "ssh_url": "git@github.com:zenorocha/clipboard.js.git"
+    },
+    {
+        "clone_url": "https://github.com/immutable-js/immutable-js.git",
+        "ssh_url": "git@github.com:immutable-js/immutable-js.git"
+    },
+    {
+        "clone_url": "https://github.com/photonstorm/phaser.git",
+        "ssh_url": "git@github.com:photonstorm/phaser.git"
+    },
+    {
+        "clone_url": "https://github.com/evanw/esbuild.git",
+        "ssh_url": "git@github.com:evanw/esbuild.git"
+    },
+    {
+        "clone_url": "https://github.com/NervJS/taro.git",
+        "ssh_url": "git@github.com:NervJS/taro.git"
+    },
+    {
+        "clone_url": "https://github.com/xitu/gold-miner.git",
+        "ssh_url": "git@github.com:xitu/gold-miner.git"
+    },
+    {
+        "clone_url": "https://github.com/google/zx.git",
+        "ssh_url": "git@github.com:google/zx.git"
+    },
+    {
+        "clone_url": "https://github.com/carbon-app/carbon.git",
+        "ssh_url": "git@github.com:carbon-app/carbon.git"
+    },
+    {
+        "clone_url": "https://github.com/serhii-londar/open-source-mac-os-apps.git",
+        "ssh_url": "git@github.com:serhii-londar/open-source-mac-os-apps.git"
+    },
+    {
+        "clone_url": "https://github.com/gorhill/uBlock.git",
+        "ssh_url": "git@github.com:gorhill/uBlock.git"
+    },
+    {
+        "clone_url": "https://github.com/SheetJS/sheetjs.git",
+        "ssh_url": "git@github.com:SheetJS/sheetjs.git"
+    },
+    {
+        "clone_url": "https://github.com/laurent22/joplin.git",
+        "ssh_url": "git@github.com:laurent22/joplin.git"
+    },
+    {
+        "clone_url": "https://github.com/vuejs/core.git",
+        "ssh_url": "git@github.com:vuejs/core.git"
+    },
+    {
+        "clone_url": "https://github.com/date-fns/date-fns.git",
+        "ssh_url": "git@github.com:date-fns/date-fns.git"
+    },
+    {
+        "clone_url": "https://github.com/LeCoupa/awesome-cheatsheets.git",
+        "ssh_url": "git@github.com:LeCoupa/awesome-cheatsheets.git"
+    },
+    {
+        "clone_url": "https://github.com/typeorm/typeorm.git",
+        "ssh_url": "git@github.com:typeorm/typeorm.git"
+    },
+    {
+        "clone_url": "https://github.com/caolan/async.git",
+        "ssh_url": "git@github.com:caolan/async.git"
+    },
+    {
+        "clone_url": "https://github.com/vuejs/vuex.git",
+        "ssh_url": "git@github.com:vuejs/vuex.git"
+    },
+    {
+        "clone_url": "https://github.com/sorrycc/awesome-javascript.git",
+        "ssh_url": "git@github.com:sorrycc/awesome-javascript.git"
+    },
+    {
+        "clone_url": "https://github.com/standard/standard.git",
+        "ssh_url": "git@github.com:standard/standard.git"
+    },
+    {
+        "clone_url": "https://github.com/ReactiveX/rxjs.git",
+        "ssh_url": "git@github.com:ReactiveX/rxjs.git"
+    },
+    {
+        "clone_url": "https://github.com/elsewhencode/project-guidelines.git",
+        "ssh_url": "git@github.com:elsewhencode/project-guidelines.git"
+    },
+    {
+        "clone_url": "https://github.com/mqyqingfeng/Blog.git",
+        "ssh_url": "git@github.com:mqyqingfeng/Blog.git"
+    },
+    {
+        "clone_url": "https://github.com/jashkenas/underscore.git",
+        "ssh_url": "git@github.com:jashkenas/underscore.git"
+    },
+    {
+        "clone_url": "https://github.com/webtorrent/webtorrent.git",
+        "ssh_url": "git@github.com:webtorrent/webtorrent.git"
+    },
+    {
+        "clone_url": "https://github.com/denysdovhan/wtfjs.git",
+        "ssh_url": "git@github.com:denysdovhan/wtfjs.git"
+    },
+    {
+        "clone_url": "https://github.com/sequelize/sequelize.git",
+        "ssh_url": "git@github.com:sequelize/sequelize.git"
+    },
+    {
+        "clone_url": "https://github.com/layui/layui.git",
+        "ssh_url": "git@github.com:layui/layui.git"
+    },
+    {
+        "clone_url": "https://github.com/naptha/tesseract.js.git",
+        "ssh_url": "git@github.com:naptha/tesseract.js.git"
+    },
+    {
+        "clone_url": "https://github.com/niklasvh/html2canvas.git",
+        "ssh_url": "git@github.com:niklasvh/html2canvas.git"
+    },
+    {
+        "clone_url": "https://github.com/youngyangyang04/leetcode-master.git",
+        "ssh_url": "git@github.com:youngyangyang04/leetcode-master.git"
+    },
+    {
+        "clone_url": "https://github.com/VincentGarreau/particles.js.git",
+        "ssh_url": "git@github.com:VincentGarreau/particles.js.git"
+    },
+    {
+        "clone_url": "https://github.com/ossu/computer-science.git",
+        "ssh_url": "git@github.com:ossu/computer-science.git"
+    },
+    {
+        "clone_url": "https://github.com/jlevy/the-art-of-command-line.git",
+        "ssh_url": "git@github.com:jlevy/the-art-of-command-line.git"
+    },
+    {
+        "clone_url": "https://github.com/animate-css/animate.css.git",
+        "ssh_url": "git@github.com:animate-css/animate.css.git"
+    },
+    {
+        "clone_url": "https://github.com/necolas/normalize.css.git",
+        "ssh_url": "git@github.com:necolas/normalize.css.git"
+    },
+    {
+        "clone_url": "https://github.com/GrowingGit/GitHub-Chinese-Top-Charts.git",
+        "ssh_url": "git@github.com:GrowingGit/GitHub-Chinese-Top-Charts.git"
+    },
+    {
+        "clone_url": "https://github.com/vsouza/awesome-ios.git",
+        "ssh_url": "git@github.com:vsouza/awesome-ios.git"
+    },
+    {
+        "clone_url": "https://github.com/caddyserver/caddy.git",
+        "ssh_url": "git@github.com:caddyserver/caddy.git"
+    },
+    {
+        "clone_url": "https://github.com/Anduin2017/HowToCook.git",
+        "ssh_url": "git@github.com:Anduin2017/HowToCook.git"
+    },
+    {
+        "clone_url": "https://github.com/obsproject/obs-studio.git",
+        "ssh_url": "git@github.com:obsproject/obs-studio.git"
+    },
+    {
+        "clone_url": "https://github.com/FreeCodeCampChina/freecodecamp.cn.git",
+        "ssh_url": "git@github.com:FreeCodeCampChina/freecodecamp.cn.git"
+    },
+    {
+        "clone_url": "https://github.com/Developer-Y/cs-video-courses.git",
+        "ssh_url": "git@github.com:Developer-Y/cs-video-courses.git"
+    },
+    {
+        "clone_url": "https://github.com/isocpp/CppCoreGuidelines.git",
+        "ssh_url": "git@github.com:isocpp/CppCoreGuidelines.git"
+    },
+    {
+        "clone_url": "https://github.com/RocketChat/Rocket.Chat.git",
+        "ssh_url": "git@github.com:RocketChat/Rocket.Chat.git"
+    },
+    {
+        "clone_url": "https://github.com/raywenderlich/swift-algorithm-club.git",
+        "ssh_url": "git@github.com:raywenderlich/swift-algorithm-club.git"
+    },
+    {
+        "clone_url": "https://github.com/spf13/cobra.git",
+        "ssh_url": "git@github.com:spf13/cobra.git"
+    },
+    {
+        "clone_url": "https://github.com/docker/compose.git",
+        "ssh_url": "git@github.com:docker/compose.git"
+    },
+    {
+        "clone_url": "https://github.com/angular/angular-cli.git",
+        "ssh_url": "git@github.com:angular/angular-cli.git"
+    },
+    {
+        "clone_url": "https://github.com/cheeriojs/cheerio.git",
+        "ssh_url": "git@github.com:cheeriojs/cheerio.git"
+    },
+    {
+        "clone_url": "https://github.com/iamadamdev/bypass-paywalls-chrome.git",
+        "ssh_url": "git@github.com:iamadamdev/bypass-paywalls-chrome.git"
+    },
+    {
+        "clone_url": "https://github.com/codemirror/CodeMirror.git",
+        "ssh_url": "git@github.com:codemirror/CodeMirror.git"
+    },
+    {
+        "clone_url": "https://github.com/Binaryify/NeteaseCloudMusicApi.git",
+        "ssh_url": "git@github.com:Binaryify/NeteaseCloudMusicApi.git"
+    },
+    {
+        "clone_url": "https://github.com/angular/components.git",
+        "ssh_url": "git@github.com:angular/components.git"
+    },
+    {
+        "clone_url": "https://github.com/jamiebuilds/the-super-tiny-compiler.git",
+        "ssh_url": "git@github.com:jamiebuilds/the-super-tiny-compiler.git"
+    },
+    {
+        "clone_url": "https://github.com/littlecodersh/ItChat.git",
+        "ssh_url": "git@github.com:littlecodersh/ItChat.git"
+    },
+    {
+        "clone_url": "https://github.com/android/architecture-components-samples.git",
+        "ssh_url": "git@github.com:android/architecture-components-samples.git"
+    },
+    {
+        "clone_url": "https://github.com/OWASP/CheatSheetSeries.git",
+        "ssh_url": "git@github.com:OWASP/CheatSheetSeries.git"
+    },
+    {
+        "clone_url": "https://github.com/Light-City/CPlusPlusThings.git",
+        "ssh_url": "git@github.com:Light-City/CPlusPlusThings.git"
+    },
+    {
+        "clone_url": "https://github.com/schollz/croc.git",
+        "ssh_url": "git@github.com:schollz/croc.git"
+    },
+    {
+        "clone_url": "https://github.com/Homebrew/homebrew-cask.git",
+        "ssh_url": "git@github.com:Homebrew/homebrew-cask.git"
+    },
+    {
+        "clone_url": "https://github.com/GorvGoyl/Clone-Wars.git",
+        "ssh_url": "git@github.com:GorvGoyl/Clone-Wars.git"
+    },
+    {
+        "clone_url": "https://github.com/nothings/stb.git",
+        "ssh_url": "git@github.com:nothings/stb.git"
+    },
+    {
+        "clone_url": "https://github.com/adobe-fonts/source-code-pro.git",
+        "ssh_url": "git@github.com:adobe-fonts/source-code-pro.git"
+    },
+    {
+        "clone_url": "https://github.com/dotnet/corefx.git",
+        "ssh_url": "git@github.com:dotnet/corefx.git"
+    },
+    {
+        "clone_url": "https://github.com/apollographql/apollo-client.git",
+        "ssh_url": "git@github.com:apollographql/apollo-client.git"
+    },
+    {
+        "clone_url": "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git",
+        "ssh_url": "git@github.com:junyanz/pytorch-CycleGAN-and-pix2pix.git"
+    },
+    {
+        "clone_url": "https://github.com/zloirock/core-js.git",
+        "ssh_url": "git@github.com:zloirock/core-js.git"
+    },
+    {
+        "clone_url": "https://github.com/dianping/cat.git",
+        "ssh_url": "git@github.com:dianping/cat.git"
+    },
+    {
+        "clone_url": "https://github.com/github/copilot-docs.git",
+        "ssh_url": "git@github.com:github/copilot-docs.git"
+    },
+    {
+        "clone_url": "https://github.com/spmallick/learnopencv.git",
+        "ssh_url": "git@github.com:spmallick/learnopencv.git"
+    },
+    {
+        "clone_url": "https://github.com/radareorg/radare2.git",
+        "ssh_url": "git@github.com:radareorg/radare2.git"
+    },
+    {
+        "clone_url": "https://github.com/jbhuang0604/awesome-computer-vision.git",
+        "ssh_url": "git@github.com:jbhuang0604/awesome-computer-vision.git"
+    },
+    {
+        "clone_url": "https://github.com/dotnet/roslyn.git",
+        "ssh_url": "git@github.com:dotnet/roslyn.git"
+    },
+    {
+        "clone_url": "https://github.com/MonitorControl/MonitorControl.git",
+        "ssh_url": "git@github.com:MonitorControl/MonitorControl.git"
+    },
+    {
+        "clone_url": "https://github.com/docker/awesome-compose.git",
+        "ssh_url": "git@github.com:docker/awesome-compose.git"
+    },
+    {
+        "clone_url": "https://github.com/jobbole/awesome-java-cn.git",
+        "ssh_url": "git@github.com:jobbole/awesome-java-cn.git"
+    },
+    {
+        "clone_url": "https://github.com/thedaviddias/Front-End-Performance-Checklist.git",
+        "ssh_url": "git@github.com:thedaviddias/Front-End-Performance-Checklist.git"
+    },
+    {
+        "clone_url": "https://github.com/Jam3/math-as-code.git",
+        "ssh_url": "git@github.com:Jam3/math-as-code.git"
+    },
+    {
+        "clone_url": "https://github.com/AlDanial/cloc.git",
+        "ssh_url": "git@github.com:AlDanial/cloc.git"
+    },
+    {
+        "clone_url": "https://github.com/google/libphonenumber.git",
+        "ssh_url": "git@github.com:google/libphonenumber.git"
+    },
+    {
+        "clone_url": "https://github.com/izackwu/TeachYourselfCS-CN.git",
+        "ssh_url": "git@github.com:izackwu/TeachYourselfCS-CN.git"
+    },
+    {
+        "clone_url": "https://github.com/afshinea/stanford-cs-229-machine-learning.git",
+        "ssh_url": "git@github.com:afshinea/stanford-cs-229-machine-learning.git"
+    },
+    {
+        "clone_url": "https://github.com/selfteaching/the-craft-of-selfteaching.git",
+        "ssh_url": "git@github.com:selfteaching/the-craft-of-selfteaching.git"
+    },
+    {
+        "clone_url": "https://github.com/CachetHQ/Cachet.git",
+        "ssh_url": "git@github.com:CachetHQ/Cachet.git"
+    },
+    {
+        "clone_url": "https://github.com/unbug/codelf.git",
+        "ssh_url": "git@github.com:unbug/codelf.git"
+    },
+    {
+        "clone_url": "https://github.com/Yixiaohan/show-me-the-code.git",
+        "ssh_url": "git@github.com:Yixiaohan/show-me-the-code.git"
+    },
+    {
+        "clone_url": "https://github.com/hashcat/hashcat.git",
+        "ssh_url": "git@github.com:hashcat/hashcat.git"
+    },
+    {
+        "clone_url": "https://github.com/aws/aws-cli.git",
+        "ssh_url": "git@github.com:aws/aws-cli.git"
+    },
+    {
+        "clone_url": "https://github.com/qmk/qmk_firmware.git",
+        "ssh_url": "git@github.com:qmk/qmk_firmware.git"
+    },
+    {
+        "clone_url": "https://github.com/vdumoulin/conv_arithmetic.git",
+        "ssh_url": "git@github.com:vdumoulin/conv_arithmetic.git"
+    },
+    {
+        "clone_url": "https://github.com/ben-manes/caffeine.git",
+        "ssh_url": "git@github.com:ben-manes/caffeine.git"
+    },
+    {
+        "clone_url": "https://github.com/codesandbox/codesandbox-client.git",
+        "ssh_url": "git@github.com:codesandbox/codesandbox-client.git"
+    },
+    {
+        "clone_url": "https://github.com/bang590/JSPatch.git",
+        "ssh_url": "git@github.com:bang590/JSPatch.git"
+    },
+    {
+        "clone_url": "https://github.com/android/compose-samples.git",
+        "ssh_url": "git@github.com:android/compose-samples.git"
+    },
+    {
+        "clone_url": "https://github.com/s-matyukevich/raspberry-pi-os.git",
+        "ssh_url": "git@github.com:s-matyukevich/raspberry-pi-os.git"
+    },
+    {
+        "clone_url": "https://github.com/weilanwl/ColorUI.git",
+        "ssh_url": "git@github.com:weilanwl/ColorUI.git"
+    },
+    {
+        "clone_url": "https://github.com/junyanz/CycleGAN.git",
+        "ssh_url": "git@github.com:junyanz/CycleGAN.git"
+    },
+    {
+        "clone_url": "https://github.com/davisking/dlib.git",
+        "ssh_url": "git@github.com:davisking/dlib.git"
+    },
+    {
+        "clone_url": "https://github.com/pybind/pybind11.git",
+        "ssh_url": "git@github.com:pybind/pybind11.git"
+    },
+    {
+        "clone_url": "https://github.com/karpathy/char-rnn.git",
+        "ssh_url": "git@github.com:karpathy/char-rnn.git"
+    },
+    {
+        "clone_url": "https://github.com/reactos/reactos.git",
+        "ssh_url": "git@github.com:reactos/reactos.git"
+    },
+    {
+        "clone_url": "https://github.com/containerd/containerd.git",
+        "ssh_url": "git@github.com:containerd/containerd.git"
+    },
+    {
+        "clone_url": "https://github.com/calcom/cal.com.git",
+        "ssh_url": "git@github.com:calcom/cal.com.git"
+    },
+    {
+        "clone_url": "https://github.com/jupeter/clean-code-php.git",
+        "ssh_url": "git@github.com:jupeter/clean-code-php.git"
+    },
+    {
+        "clone_url": "https://github.com/XiangLinPro/IT_book.git",
+        "ssh_url": "git@github.com:XiangLinPro/IT_book.git"
+    },
+    {
+        "clone_url": "https://github.com/OpenRCT2/OpenRCT2.git",
+        "ssh_url": "git@github.com:OpenRCT2/OpenRCT2.git"
+    },
+    {
+        "clone_url": "https://github.com/andlabs/libui.git",
+        "ssh_url": "git@github.com:andlabs/libui.git"
+    },
+    {
+        "clone_url": "https://github.com/spencermountain/compromise.git",
+        "ssh_url": "git@github.com:spencermountain/compromise.git"
+    },
+    {
+        "clone_url": "https://github.com/lionsoul2014/ip2region.git",
+        "ssh_url": "git@github.com:lionsoul2014/ip2region.git"
+    },
+    {
+        "clone_url": "https://github.com/cyclejs/cyclejs.git",
+        "ssh_url": "git@github.com:cyclejs/cyclejs.git"
+    },
+    {
+        "clone_url": "https://github.com/forkingdog/UITableView-FDTemplateLayoutCell.git",
+        "ssh_url": "git@github.com:forkingdog/UITableView-FDTemplateLayoutCell.git"
+    },
+    {
+        "clone_url": "https://github.com/WenchaoD/FSCalendar.git",
+        "ssh_url": "git@github.com:WenchaoD/FSCalendar.git"
+    },
+    {
+        "clone_url": "https://github.com/googleapis/google-api-nodejs-client.git",
+        "ssh_url": "git@github.com:googleapis/google-api-nodejs-client.git"
+    },
+    {
+        "clone_url": "https://github.com/mono/mono.git",
+        "ssh_url": "git@github.com:mono/mono.git"
+    },
+    {
+        "clone_url": "https://github.com/audreyfeldroy/favicon-cheat-sheet.git",
+        "ssh_url": "git@github.com:audreyfeldroy/favicon-cheat-sheet.git"
+    },
+    {
+        "clone_url": "https://github.com/clojure/clojure.git",
+        "ssh_url": "git@github.com:clojure/clojure.git"
+    },
+    {
+        "clone_url": "https://github.com/senchalabs/connect.git",
+        "ssh_url": "git@github.com:senchalabs/connect.git"
+    },
+    {
+        "clone_url": "https://github.com/apereo/cas.git",
+        "ssh_url": "git@github.com:apereo/cas.git"
+    },
+    {
+        "clone_url": "https://github.com/c3js/c3.git",
+        "ssh_url": "git@github.com:c3js/c3.git"
+    },
+    {
+        "clone_url": "https://github.com/fogleman/Craft.git",
+        "ssh_url": "git@github.com:fogleman/Craft.git"
+    },
+    {
+        "clone_url": "https://github.com/symfony/console.git",
+        "ssh_url": "git@github.com:symfony/console.git"
+    },
+    {
+        "clone_url": "https://github.com/Droogans/unmaintainable-code.git",
+        "ssh_url": "git@github.com:Droogans/unmaintainable-code.git"
+    },
+    {
+        "clone_url": "https://github.com/wsdjeg/vim-galore-zh_cn.git",
+        "ssh_url": "git@github.com:wsdjeg/vim-galore-zh_cn.git"
+    },
+    {
+        "clone_url": "https://github.com/clojure/clojurescript.git",
+        "ssh_url": "git@github.com:clojure/clojurescript.git"
+    },
+    {
+        "clone_url": "https://github.com/symless/synergy-core.git",
+        "ssh_url": "git@github.com:symless/synergy-core.git"
+    },
+    {
+        "clone_url": "https://github.com/aws/chalice.git",
+        "ssh_url": "git@github.com:aws/chalice.git"
+    },
+    {
+        "clone_url": "https://github.com/crawlab-team/crawlab.git",
+        "ssh_url": "git@github.com:crawlab-team/crawlab.git"
+    },
+    {
+        "clone_url": "https://github.com/jlevy/og-equity-compensation.git",
+        "ssh_url": "git@github.com:jlevy/og-equity-compensation.git"
+    },
+    {
+        "clone_url": "https://github.com/gka/chroma.js.git",
+        "ssh_url": "git@github.com:gka/chroma.js.git"
+    },
+    {
+        "clone_url": "https://github.com/DayBreak-u/chineseocr_lite.git",
+        "ssh_url": "git@github.com:DayBreak-u/chineseocr_lite.git"
+    },
+    {
+        "clone_url": "https://github.com/carrierwaveuploader/carrierwave.git",
+        "ssh_url": "git@github.com:carrierwaveuploader/carrierwave.git"
+    }
+]

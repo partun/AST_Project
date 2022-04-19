@@ -10,16 +10,18 @@ const path = require('path');
 const fs = require('fs');
 const fileutils = require('./fileoperations');
 
+const language = 'C'
+
 async function getLinks(link_to_top_repos, numOfGitHubRepos) {
     // Uncomment the following lines if top1000GithubRepos.json is not present OR needs to be updated
 
-    // let github_scapper = new Scrapper(link_to_top_repos, numOfGitHubRepos);
-    // // If more than '100' is required then the pages need to be changed for each request
-    // github_scapper.getRepositoriesParseCommits({
-    //   language: 'javascript',
-    //   page: 1,
-    //   q_no: 0
-    // });
+    let github_scapper = new Scrapper(link_to_top_repos, numOfGitHubRepos);
+    // If more than '100' is required then the pages need to be changed for each request
+    github_scapper.getRepositoriesParseCommits({
+        language: language,
+        page: 1,
+        q_no: 0
+    });
 }
 
 /**
@@ -38,8 +40,8 @@ async function getLinksAndDownload(link_to_top_repos, download_dir, numOfGitHubR
 
 function main() {
 
-    let link_to_top_repos = path.join('benchmarks', 'top1000GithubRepos.json'); // Where the links (GitHub URLs) to top 'N' repos will be saved
-    let download_dir = path.join('benchmarks', 'top_JS_repos'); // Where the top 'N' repos will be saved
+    let link_to_top_repos = path.join('benchmarks', `top100_${language}_repos.json`); // Where the links (GitHub URLs) to top 'N' repos will be saved
+    let download_dir = path.join('benchmarks', `__top_${language}_repos`); // Where the top 'N' repos will be saved
     let num_of_github_repos_to_download = 100;
 
     if (!fileutils.available(download_dir))
