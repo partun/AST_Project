@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mongodb:
+    container_name: mongo
+    image: mongo:5.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=semSeedUser
+      - MONGO_INITDB_ROOT_PASSWORD=semSeedPassWord124
+    ports:
+      - 27017:27017
+    volumes:
+      - ./__data:/data/db
