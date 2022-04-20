@@ -213,7 +213,7 @@ def parse_repos_extract_changes(git_repo_location, file_extension, query_terms,
 
 
 if __name__ == "__main__":
-    top_JS_repos_path = os.path.join('benchmarks', 'top_JS_repos')
+    top_JS_repos_path = os.path.join('benchmarks', '__top_JavaScript_repos')
     terms_to_search_in_commit_message = ['Bug', 'Fix', 'Error', 'Issue', 'Problem', 'Correct']
 
     print("Make sure MongoDB is running. On Ubuntu, you may use 'sudo systemctl start mongod' ")

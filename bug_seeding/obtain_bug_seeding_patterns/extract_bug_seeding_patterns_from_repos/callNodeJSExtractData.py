@@ -58,7 +58,8 @@ def create_patterns_from_commits(select_num_of_commits=-1):
         num_files_changed=num_of_files_changed, num_single_line_changes=num_single_line_changes)
     print('Found %d records that has only %d file change and only %d single line change' %
           (query_obj.count(), num_of_files_changed, num_single_line_changes))
-    pks = json.loads(query_obj.only('pk').to_json())  # get only the primary keys
+    pks = json.loads(query_obj.only('pk').to_json()
+                     )  # get only the primary keys
 
     # Now put all primary keys in a list.
     # The primary keys are nothing but commit hashes concatenated with the repository
