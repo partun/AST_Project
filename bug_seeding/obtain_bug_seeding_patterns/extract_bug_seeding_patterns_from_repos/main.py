@@ -19,15 +19,16 @@ from pathlib import Path
 from datetime import datetime
 from multiprocessing import Pool
 from tqdm import tqdm
-from typing import List
+from typing import Any, Dict, List, Tuple
 from callNodeJSExtractData import create_patterns_from_commits
+from enum import Enum
 
 
 def get_git_repos_file_paths(source_dir):
     '''
 
     @param source_dir:
-    @return:
+    @return: list of repo paths
     '''
     dir_list = listdir(source_dir)
     repo_paths = []
@@ -35,6 +36,16 @@ def get_git_repos_file_paths(source_dir):
         if not isfile(path):
             repo_paths.append(join(source_dir, path))
     return repo_paths
+
+
+class RejectReason(Enum):
+    Selected = 'selected'
+    MultiLineChange = 'multi_line_change'
+    MultiFileChange = 'multi_file_change'
+    HasDeletions = 'has_deletions'
+    HasInsertions = 'has_insertions'
+    MultableParents = 'multable_parents'
+    NoQueryTerms = 'no_query_terms'
 
 
 def query_repo_save_commits(repo_path: str, query_terms: List, file_extension: str) -> None:
@@ -58,44 +69,82 @@ def query_repo_save_commits(repo_path: str, query_terms: List, file_extension: s
     last_commit = None
     for l in repo.head.log():
         last_commit = l.oid_new
+
+    total_commits = 0
+    selected_commits = 0
+    selected_changes = 0
+    reject_counter: dict[RejectReason, int] = dict()
     # Go through each commit starting from the most recent commit
     for commit in repo.walk(last_commit, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
-        num_parents = len(
-            commit.parents)  # Do not want to include merges, hence we check if the number of parents is 'one'
-        if num_parents == 1 and commit_message_contains_query(commit.message, query_terms):
-            # Diff between the current commit and its parent
-            diff = repo.diff(commit.hex + '^', commit.hex)
-            changes = extract_single_line_changes(diff, file_filter)
+        total_commits += 1
 
-            if len(changes) > 0:
-                cm = db.Commits(
-                    commit_id=remote_url.split('https://github.com/')[1] + '_' + commit.hex,
-                    commit_hash=commit.hex,
-                    commit_message=commit.message,
-                    commit_time=datetime.fromtimestamp(commit.commit_time),
-                    local_repo_path=repo_path,
-                    parent_hash=str(commit.parent_ids[0]),
-                    url=f'{remote_url}/commit/{commit.hex}',
-                    num_files_changed=diff.stats.files_changed,
-                    single_line_changes=changes,
-                    num_single_line_changes=len(changes)
-                )
-                cm.save()  # Save the commit to the database
+        # Do not want to include merges, hence we check if the number of parents is 'one'
+        num_parents = len(commit.parents)
+        if num_parents != 1:
+            reject_counter[RejectReason.MultableParents] = reject_counter.get(
+                RejectReason.MultableParents, 0) + 1
+            continue
+
+        # check if commit messages contains querry terms
+        if commit_message_contains_query(commit.message, query_terms):
+            reject_counter[RejectReason.NoQueryTerms] = reject_counter.get(
+                RejectReason.NoQueryTerms, 0) + 1
+            continue
+
+        # Diff between the current commit and its parent
+        diff = repo.diff(commit.hex + '^', commit.hex)
+        changes, reject_reason = extract_single_line_changes(
+            diff, file_filter)
+
+        reject_counter[reject_reason] = reject_counter.get(
+            reject_reason, 0) + 1
+
+        if len(changes) > 0:
+            selected_commits += 1
+            selected_changes += len(changes)
+            cm = db.Commits(
+                commit_id=remote_url.split(
+                    'https://github.com/')[1] + '_' + commit.hex,
+                commit_hash=commit.hex,
+                commit_message=commit.message,
+                commit_time=datetime.fromtimestamp(commit.commit_time),
+                local_repo_path=repo_path,
+                parent_hash=str(commit.parent_ids[0]),
+                url=f'{remote_url}/commit/{commit.hex}',
+                num_files_changed=diff.stats.files_changed,
+                single_line_changes=changes,
+                num_single_line_changes=len(changes)
+            )
+            cm.save()  # Save the commit to the database
+
+    cm = db.Repos(
+        local_repo_path=repo_path,
+        remote_url=remote_url,
+        total_commits=total_commits,
+        selected_commits=selected_commits,
+        selection_rate=0 if total_commits == 0 else selected_commits/total_commits,
+        selected_changes=selected_changes,
+        reject_counter={reason.value: cnt for reason,
+                        cnt in reject_counter.items()}
+    )
+    cm.save()
 
 
-def extract_single_line_changes(diff, file_filter):
+def extract_single_line_changes(diff, file_filter) -> Tuple[Dict[str, Any], RejectReason]:
     """
     Given a diff and a file extension filter. Extract only single line changes.
     This function extracts only those commits where exactly one line has changed.
     :param diff:
     :param file_filter:
-    :return:
+    :return: tuple[list of changes, reject reason]
     """
     single_line_changes = []
     if diff.stats.files_changed > 1:
-        return []
-    if diff.stats.deletions > 1 or diff.stats.insertions > 1:
-        return []
+        return [], RejectReason.MultiFileChange
+    if diff.stats.deletions > 1:
+        return [], RejectReason.HasDeletions
+    if diff.stats.insertions > 1:
+        return [], RejectReason.HasInsertions
     for patch in diff:
         # In most cases, the file paths remain the same
         old_file_path = patch.delta.new_file.path
@@ -108,7 +157,7 @@ def extract_single_line_changes(diff, file_filter):
             line_numbers = get_changes_from_new_file(parsed_patch)
             # If more than one line has changed in the 'new'/'fixed' file, we ignore the commit.
             if new_file_path not in line_numbers or len(line_numbers[new_file_path]) > 1:
-                return []
+                return [], RejectReason.MultiLineChange
         except IndexError:
             continue
 
@@ -128,9 +177,9 @@ def extract_single_line_changes(diff, file_filter):
                             'path': new_file_path,
                             'line_num': lin.new_lineno,
                             'changed_line': lin.content
-                        }
+                                }
                     })
-    return single_line_changes
+    return single_line_changes, RejectReason.Selected
 
 
 def get_changes_from_new_file(parsed_patch):
@@ -185,12 +234,16 @@ def write_extracted_commits(data, outdir, repo_path):
 
 
 def parse_repos_extract_changes(git_repo_location, file_extension, query_terms,
-                                num_of_repos_to_parse=-1):
+                                num_of_repos_to_parse=-1, debug=False):
+    """
+    Extract and save all single line changes from the repos to the MongoDB database
+    :param debug: disables multi processing
+    """
+
     repo_paths = get_git_repos_file_paths(git_repo_location)
-    debug = False  # Disable multiprocessing if debug is True
     if num_of_repos_to_parse > 0:
-        print('Selecting %d repos out of %d available repos ' %
-              (num_of_repos_to_parse, len(repo_paths)))
+        print(
+            f'Selecting {num_of_repos_to_parse} repos out of {len(repo_paths)} available repos')
         repo_paths = repo_paths[:num_of_repos_to_parse]
 
     arguments = [(repo_path, query_terms, file_extension)
@@ -198,12 +251,9 @@ def parse_repos_extract_changes(git_repo_location, file_extension, query_terms,
     if not debug:
         with Pool(processes=multiprocessing.cpu_count()) as p:
             with tqdm(total=len(repo_paths)) as pbar:
-                pbar.set_description_str(
-                    desc="Parsing repos ", refresh=False)
+                pbar.set_description_str(desc="Parsing repos ", refresh=False)
                 for i, _ in tqdm(
-                        enumerate(
-                            p.imap_unordered(extract_from_repo,
-                                             arguments))):
+                        enumerate(p.imap_unordered(extract_from_repo, arguments))):
                     pbar.update()
                 p.close()
                 p.join()
@@ -213,15 +263,19 @@ def parse_repos_extract_changes(git_repo_location, file_extension, query_terms,
 
 
 if __name__ == "__main__":
-    top_JS_repos_path = os.path.join('benchmarks', '__top_JavaScript_repos')
-    terms_to_search_in_commit_message = ['Bug', 'Fix', 'Error', 'Issue', 'Problem', 'Correct']
+    top_JS_repos_path = os.path.join('benchmarks', '__top_c_repos')
+    terms_to_search_in_commit_message = [
+        'Bug', 'Fix', 'Error', 'Issue', 'Problem', 'Correct']
 
     print("Make sure MongoDB is running. On Ubuntu, you may use 'sudo systemctl start mongod' ")
 
-    # Extract and save all single line changes from the repos to the MongoDB database
-    parse_repos_extract_changes(git_repo_location=top_JS_repos_path,
-                                file_extension='.js', query_terms=terms_to_search_in_commit_message,
-                                num_of_repos_to_parse=100)
+    # Step 1: Extract and save all single line changes from the repos to the MongoDB database
+    # parse_repos_extract_changes(git_repo_location=top_JS_repos_path,
+    #                             file_extension='.c',
+    #                             query_terms=terms_to_search_in_commit_message,
+    #                             num_of_repos_to_parse=400,
+    #                             debug=False
+    #                             )
 
-    # After this has finished, call Node.js and create bug-seeding patterns.
-    create_patterns_from_commits(select_num_of_commits=-1)
+    # Step 2: After this has finished, call Node.js and create bug-seeding patterns.
+    create_patterns_from_commits(select_num_of_commits=1)

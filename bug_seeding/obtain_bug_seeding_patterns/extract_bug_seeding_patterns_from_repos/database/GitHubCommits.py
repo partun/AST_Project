@@ -2,6 +2,7 @@
 @author Jibesh Patra
 """
 
+from xml.dom.minidom import Document
 from mongoengine import *
 import json
 import codecs
@@ -143,3 +144,13 @@ class Commits(Document):
     single_line_changes = ListField(DictField(DictField()))
     num_single_line_changes = IntField()
     meta = {'queryset_class': QueryChanges}
+
+
+class Repos(Document):
+    local_repo_path = StringField(primary_key=True)
+    remote_url = StringField(required=True)
+    total_commits = IntField(required=True)
+    selected_commits = IntField(required=True)
+    selection_rate = FloatField(required=True)
+    selected_changes = IntField(required=True)
+    reject_counter = DictField(required=True)
