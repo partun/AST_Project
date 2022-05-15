@@ -1,4 +1,5 @@
 from distutils.errors import LibError
+import stat
 from typing import Dict, Type, NamedTuple, Tuple, Optional, List
 from clang.cindex import Index, TranslationUnit, CursorKind, SourceLocation, SourceRange, TokenKind
 from pprint import pprint
@@ -23,8 +24,22 @@ class SrcRange(NamedTuple):
         """
         return self.start_line == self.end_line
 
+    def encapsules(self, other_range) -> bool:
+        start_earlier = self.start_line < other_range.start_line or \
+            self.start_line == other_range.start_line and \
+            self.start_col <= other_range.start_col
+
+        ends_later = self.end_line > other_range.end_line or \
+            self.end_line == other_range.end_line and \
+            self.end_col >= other_range.end_col
+
+        return start_earlier and ends_later
+
     def __str__(self) -> str:
         return f'{self.start_line}:{self.start_col}-{self.end_line}:{self.end_col}'
+
+    def to_line_str(self) -> str:
+        return f'{self.start_line}-{self.end_line}'
 
 
 class CodeAnalysis:
@@ -38,7 +53,9 @@ class CodeAnalysis:
         self.lit_to_range = dict()
         self.range_to_lit = dict()
 
-        self.traverse(ast.cursor)
+        self.root_cursor = ast.cursor
+
+        self.traverse(self.root_cursor)
 
         self.token_list, self.token_range_list, self.token_type_list, self.line_to_token_seqence = \
             self.get_token_data(ast.cursor)
@@ -58,20 +75,22 @@ class CodeAnalysis:
 
         return cls(ast)
 
-    def traverse(self, root_cursor) -> None:
-        def is_literal(kind: CursorKind) -> Optional[str]:
-            if kind == CursorKind.INTEGER_LITERAL:
-                return 'int'
-            if kind == CursorKind.FLOATING_LITERAL:
-                return 'float'
-            if kind == CursorKind.CHARACTER_LITERAL:
-                return 'char'
-            if kind == CursorKind.STRING_LITERAL:
-                return 'string'
-            if kind == CursorKind.CXX_BOOL_LITERAL_EXPR:
-                return 'bool'
+    @staticmethod
+    def is_literal(kind: CursorKind) -> Optional[str]:
+        if kind == CursorKind.INTEGER_LITERAL:
+            return 'int'
+        if kind == CursorKind.FLOATING_LITERAL:
+            return 'float'
+        if kind == CursorKind.CHARACTER_LITERAL:
+            return 'char'
+        if kind == CursorKind.STRING_LITERAL:
+            return 'string'
+        if kind == CursorKind.CXX_BOOL_LITERAL_EXPR:
+            return 'bool'
 
-            return None
+        return None
+
+    def traverse(self, root_cursor) -> None:
 
         def rec_traverse(node, parent_func_name, parent_func_range) -> None:
             start = node.extent.start
@@ -100,7 +119,7 @@ class CodeAnalysis:
                     rec_traverse(child, func_name, src_range)
                 return
 
-            lit_type = is_literal(node.kind)
+            lit_type = self.is_literal(node.kind)
             if lit_type:
                 token_list = list(node.get_tokens())
                 assert len(token_list) == 1
@@ -142,7 +161,7 @@ class CodeAnalysis:
             src_range = SrcRange.form_source_range(token.extent)
 
             if src_range in self.range_to_lit:
-                token_value = self.range_to_lit[src_range]
+                token_value = self.range_to_lit[src_range]['value']
             else:
                 token_value = token.spelling
 
