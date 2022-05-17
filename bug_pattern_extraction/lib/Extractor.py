@@ -1,3 +1,4 @@
+from unittest import result
 from lib.BugFixes import MongoDB
 from lib.CodeAnalysis import CodeAnalysis, SrcRange
 import pygit2 as git
@@ -20,8 +21,54 @@ def select_node(analysed_code: List[Dict[str, Any]], changed_line_no: int) -> Op
     return candidate_node
 
 
-def rename_abstracted_changes(fixed_node: Dict[str, Any], buggy_node: Dict[str, Any]):
-    pass
+def rename_abstracted_changes(fixed_node: Dict[str, Any], buggy_node: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    It is possible that both the fixed and the buggy part of the conditional test contains the
+    same Identifiers. Since, we abstract the Identifiers independently, might need to be named properly.
+    Eg.
+     Buggy →
+             a < b && c < d gets abstracted as Idf_1 < Idf_2 && Idf_3 < Idf_4
+     Fixed →
+             a < c && r < d gets abstracted as Idf_1 < Idf_2 && Idf_3 < Idf_4
+    The proper renaming should be
+    Idf_1 < Idf_3 && Idf_5 < Idf_4
+
+    Although mentioned above with the example of a 'buggy' to 'fix' renaming. We
+    actually do not rename the 'fix' part and rather rename the 'Idf_' of the
+    'buggy' part.
+    We do this since we want to learn how to seed bugs and not how to fix them
+    """
+
+    fixed_abstract_tokens = fixed_node['abstracted_tokens'].copy()
+    buggy_abstract_tokens = buggy_node['abstracted_tokens'].copy()
+    idf_map = dict()
+    lit_map = dict()
+
+    for token_type, token_value, abstract_token in zip(
+        fixed_node['token_types'], fixed_node['tokens'], fixed_node['abstracted_tokens']
+    ):
+        if token_type == TokenKind.IDENTIFIER and token_value not in idf_map:
+            idf_map[token_value] = abstract_token
+        elif token_type == TokenKind.LITERAL and token_value not in lit_map:
+            lit_map[token_value] = abstract_token
+
+    for i, (token_type, token_value, abstract_token) in enumerate(zip(
+        buggy_node['token_types'], buggy_node['tokens'], buggy_node['abstracted_tokens']
+    )):
+        if token_type == TokenKind.IDENTIFIER:
+            buggy_abstract_tokens[i] = idf_map.setdefault(
+                token_value, f'Idf_{len(idf_map) + 1}')
+
+        elif token_type == TokenKind.LITERAL and token_value not in lit_map:
+            buggy_abstract_tokens[i] = lit_map.setdefault(
+                token_value, f'Lit_{len(lit_map) + 1}')
+
+    return {
+        'fix': fixed_abstract_tokens,
+        'buggy': buggy_abstract_tokens,
+        'idf_mapping': {abstract: concrete for concrete, abstract in idf_map.items()},
+        'lit_mapping': {abstract: concrete for concrete, abstract in lit_map.items()}
+    }
 
 
 def extract_bug_pattern(commit_id: str) -> None:
@@ -105,14 +152,16 @@ def extract_bug_pattern(commit_id: str) -> None:
             len(buggy_selected_node['tokens'])
         if fixed_selected_node['tokens'] == buggy_selected_node['tokens'] or \
                 token_diff_in_commit != token_diff_in_extraction:
-            change['analysis_resport'] = 'neither_Node_not_found'
+            change['analysis_report'] = 'neither_Node_not_found'
             continue
 
-        change['analysis_resport'] = 'success'
+        change['analysis_report'] = 'success'
         change['new_file']['change_analysis'] = fixed_selected_node
         change['old_file']['change_analysis'] = buggy_selected_node
         change['change_summary'] = rename_abstracted_changes(
             fixed_selected_node, buggy_selected_node)
+
+    mongo.store_extracted_pattern(commit_id, commit['single_line_changes'])
 
 
 class Extractor(CodeAnalysis):
@@ -225,4 +274,4 @@ class Extractor(CodeAnalysis):
 
             abstracted_tokens.append(abstract_token)
 
-        extracted_node_data['abstracted_tokes'] = abstract_token
+        extracted_node_data['abstracted_tokens'] = abstracted_tokens

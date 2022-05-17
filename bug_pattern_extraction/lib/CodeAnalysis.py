@@ -35,6 +35,12 @@ class SrcRange(NamedTuple):
 
         return start_earlier and ends_later
 
+    def to_dict(self) -> Dict[str, int]:
+        return {
+            'start_line': self.start_line, 'start_col': self.start_col,
+            'end_line': self.end_line, 'end_col': self.end_line
+        }
+
     def __str__(self) -> str:
         return f'{self.start_line}:{self.start_col}-{self.end_line}:{self.end_col}'
 
