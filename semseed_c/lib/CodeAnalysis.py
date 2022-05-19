@@ -128,15 +128,18 @@ class CodeAnalysis:
             lit_type = self.is_literal(node.kind)
             if lit_type:
                 token_list = list(node.get_tokens())
-                assert len(token_list) == 1
-                lit_value = token_list[0].spelling
+                # print([t.spelling for t in token_list])
+                # assert len(token_list) == 1
 
-                self.lit_to_range.setdefault(lit_value, []).append({
-                    'lit_range': src_range, 'parent_func_range': parent_func_range
-                })
-                self.range_to_lit[src_range] = {
-                    'value': lit_value, 'type': lit_type, 'line': line
-                }
+                if token_list:
+                    lit_value = token_list[0].spelling
+
+                    self.lit_to_range.setdefault(lit_value, []).append({
+                        'lit_range': src_range, 'parent_func_range': parent_func_range
+                    })
+                    self.range_to_lit[src_range] = {
+                        'value': lit_value, 'type': lit_type, 'line': line
+                    }
 
             elif node.kind == CursorKind.DECL_REF_EXPR or \
                     node.kind == CursorKind.LABEL_REF:

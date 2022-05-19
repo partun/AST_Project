@@ -1,1 +1,502 @@
-[{"clone_url":"https://github.com/torvalds/linux.git","ssh_url":"git@github.com:torvalds/linux.git","stars":130437},{"clone_url":"https://github.com/Genymobile/scrcpy.git","ssh_url":"git@github.com:Genymobile/scrcpy.git","stars":64065},{"clone_url":"https://github.com/netdata/netdata.git","ssh_url":"git@github.com:netdata/netdata.git","stars":58878},{"clone_url":"https://github.com/redis/redis.git","ssh_url":"git@github.com:redis/redis.git","stars":54477},{"clone_url":"https://github.com/git/git.git","ssh_url":"git@github.com:git/git.git","stars":41792},{"clone_url":"https://github.com/obsproject/obs-studio.git","ssh_url":"git@github.com:obsproject/obs-studio.git","stars":37733},{"clone_url":"https://github.com/php/php-src.git","ssh_url":"git@github.com:php/php-src.git","stars":33632},{"clone_url":"https://github.com/ventoy/Ventoy.git","ssh_url":"git@github.com:ventoy/Ventoy.git","stars":33458},{"clone_url":"https://github.com/wg/wrk.git","ssh_url":"git@github.com:wg/wrk.git","stars":31758},{"clone_url":"https://github.com/bilibili/ijkplayer.git","ssh_url":"git@github.com:bilibili/ijkplayer.git","stars":30234},{"clone_url":"https://github.com/FFmpeg/FFmpeg.git","ssh_url":"git@github.com:FFmpeg/FFmpeg.git","stars":29119},{"clone_url":"https://github.com/curl/curl.git","ssh_url":"git@github.com:curl/curl.git","stars":24706},{"clone_url":"https://github.com/tmux/tmux.git","ssh_url":"git@github.com:tmux/tmux.git","stars":24420},{"clone_url":"https://github.com/ggreer/the_silver_searcher.git","ssh_url":"git@github.com:ggreer/the_silver_searcher.git","stars":23529},{"clone_url":"https://github.com/cfenollosa/os-tutorial.git","ssh_url":"git@github.com:cfenollosa/os-tutorial.git","stars":22777},{"clone_url":"https://github.com/pjreddie/darknet.git","ssh_url":"git@github.com:pjreddie/darknet.git","stars":22583},{"clone_url":"https://github.com/emscripten-core/emscripten.git","ssh_url":"git@github.com:emscripten-core/emscripten.git","stars":22107},{"clone_url":"https://github.com/stedolan/jq.git","ssh_url":"git@github.com:stedolan/jq.git","stars":21837},{"clone_url":"https://github.com/coolsnowwolf/lede.git","ssh_url":"git@github.com:coolsnowwolf/lede.git","stars":20787},{"clone_url":"https://github.com/julycoding/The-Art-Of-Programming-By-July.git","ssh_url":"git@github.com:julycoding/The-Art-Of-Programming-By-July.git","stars":20353},{"clone_url":"https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System.git","ssh_url":"git@github.com:SamyPesse/How-to-Make-a-Computer-Operating-System.git","stars":19801},{"clone_url":"https://github.com/libuv/libuv.git","ssh_url":"git@github.com:libuv/libuv.git","stars":19274},{"clone_url":"https://github.com/robertdavidgraham/masscan.git","ssh_url":"git@github.com:robertdavidgraham/masscan.git","stars":18842},{"clone_url":"https://github.com/nothings/stb.git","ssh_url":"git@github.com:nothings/stb.git","stars":18567},{"clone_url":"https://github.com/Awesome-HarmonyOS/HarmonyOS.git","ssh_url":"git@github.com:Awesome-HarmonyOS/HarmonyOS.git","stars":18456},{"clone_url":"https://github.com/mpv-player/mpv.git","ssh_url":"git@github.com:mpv-player/mpv.git","stars":18364},{"clone_url":"https://github.com/openssl/openssl.git","ssh_url":"git@github.com:openssl/openssl.git","stars":18162},{"clone_url":"https://github.com/taosdata/TDengine.git","ssh_url":"git@github.com:taosdata/TDengine.git","stars":18106},{"clone_url":"https://github.com/pbatard/rufus.git","ssh_url":"git@github.com:pbatard/rufus.git","stars":18079},{"clone_url":"https://github.com/arendst/Tasmota.git","ssh_url":"git@github.com:arendst/Tasmota.git","stars":17416},{"clone_url":"https://github.com/facebook/zstd.git","ssh_url":"git@github.com:facebook/zstd.git","stars":16738},{"clone_url":"https://github.com/nginx/nginx.git","ssh_url":"git@github.com:nginx/nginx.git","stars":16164},{"clone_url":"https://github.com/radareorg/radare2.git","ssh_url":"git@github.com:radareorg/radare2.git","stars":16105},{"clone_url":"https://github.com/gentilkiwi/mimikatz.git","ssh_url":"git@github.com:gentilkiwi/mimikatz.git","stars":15219},{"clone_url":"https://github.com/allinurl/goaccess.git","ssh_url":"git@github.com:allinurl/goaccess.git","stars":14595},{"clone_url":"https://github.com/iovisor/bcc.git","ssh_url":"git@github.com:iovisor/bcc.git","stars":14231},{"clone_url":"https://github.com/micropython/micropython.git","ssh_url":"git@github.com:micropython/micropython.git","stars":13997},{"clone_url":"https://github.com/jarun/nnn.git","ssh_url":"git@github.com:jarun/nnn.git","stars":13889},{"clone_url":"https://github.com/vurtun/nuklear.git","ssh_url":"git@github.com:vurtun/nuklear.git","stars":13418},{"clone_url":"https://github.com/TheAlgorithms/C.git","ssh_url":"git@github.com:TheAlgorithms/C.git","stars":13016},{"clone_url":"https://github.com/timescale/timescaledb.git","ssh_url":"git@github.com:timescale/timescaledb.git","stars":12871},{"clone_url":"https://github.com/Foundry376/Mailspring.git","ssh_url":"git@github.com:Foundry376/Mailspring.git","stars":12532},{"clone_url":"https://github.com/hashcat/hashcat.git","ssh_url":"git@github.com:hashcat/hashcat.git","stars":12372},{"clone_url":"https://github.com/qmk/qmk_firmware.git","ssh_url":"git@github.com:qmk/qmk_firmware.git","stars":12091},{"clone_url":"https://github.com/arut/nginx-rtmp-module.git","ssh_url":"git@github.com:arut/nginx-rtmp-module.git","stars":11785},{"clone_url":"https://github.com/ish-app/ish.git","ssh_url":"git@github.com:ish-app/ish.git","stars":11730},{"clone_url":"https://github.com/memcached/memcached.git","ssh_url":"git@github.com:memcached/memcached.git","stars":11676},{"clone_url":"https://github.com/alibaba/tengine.git","ssh_url":"git@github.com:alibaba/tengine.git","stars":11393},{"clone_url":"https://github.com/s-matyukevich/raspberry-pi-os.git","ssh_url":"git@github.com:s-matyukevich/raspberry-pi-os.git","stars":11339},{"clone_url":"https://github.com/twitter/twemproxy.git","ssh_url":"git@github.com:twitter/twemproxy.git","stars":11329},{"clone_url":"https://github.com/openwrt/openwrt.git","ssh_url":"git@github.com:openwrt/openwrt.git","stars":11213},{"clone_url":"https://github.com/cloudwu/skynet.git","ssh_url":"git@github.com:cloudwu/skynet.git","stars":11116},{"clone_url":"https://github.com/koekeishiya/yabai.git","ssh_url":"git@github.com:koekeishiya/yabai.git","stars":11046},{"clone_url":"https://github.com/skywind3000/kcp.git","ssh_url":"git@github.com:skywind3000/kcp.git","stars":11039},{"clone_url":"https://github.com/google/brotli.git","ssh_url":"git@github.com:google/brotli.git","stars":11005},{"clone_url":"https://github.com/octalmage/robotjs.git","ssh_url":"git@github.com:octalmage/robotjs.git","stars":10972},{"clone_url":"https://github.com/reactos/reactos.git","ssh_url":"git@github.com:reactos/reactos.git","stars":10838},{"clone_url":"https://github.com/jonas/tig.git","ssh_url":"git@github.com:jonas/tig.git","stars":10796},{"clone_url":"https://github.com/swaywm/sway.git","ssh_url":"git@github.com:swaywm/sway.git","stars":10413},{"clone_url":"https://github.com/openresty/openresty.git","ssh_url":"git@github.com:openresty/openresty.git","stars":10362},{"clone_url":"https://github.com/woltapp/blurhash.git","ssh_url":"git@github.com:woltapp/blurhash.git","stars":10351},{"clone_url":"https://github.com/andlabs/libui.git","ssh_url":"git@github.com:andlabs/libui.git","stars":10222},{"clone_url":"https://github.com/jedisct1/libsodium.git","ssh_url":"git@github.com:jedisct1/libsodium.git","stars":10063},{"clone_url":"https://github.com/postgres/postgres.git","ssh_url":"git@github.com:postgres/postgres.git","stars":10025},{"clone_url":"https://github.com/h2o/h2o.git","ssh_url":"git@github.com:h2o/h2o.git","stars":9930},{"clone_url":"https://github.com/openresty/lua-nginx-module.git","ssh_url":"git@github.com:openresty/lua-nginx-module.git","stars":9908},{"clone_url":"https://github.com/webview/webview.git","ssh_url":"git@github.com:webview/webview.git","stars":9869},{"clone_url":"https://github.com/apple/darwin-xnu.git","ssh_url":"git@github.com:apple/darwin-xnu.git","stars":9872},{"clone_url":"https://github.com/SpacehuhnTech/esp8266_deauther.git","ssh_url":"git@github.com:SpacehuhnTech/esp8266_deauther.git","stars":9867},{"clone_url":"https://github.com/HandBrake/HandBrake.git","ssh_url":"git@github.com:HandBrake/HandBrake.git","stars":9765},{"clone_url":"https://github.com/haiwen/seafile.git","ssh_url":"git@github.com:haiwen/seafile.git","stars":9596},{"clone_url":"https://github.com/systemd/systemd.git","ssh_url":"git@github.com:systemd/systemd.git","stars":9432},{"clone_url":"https://github.com/Tencent/wcdb.git","ssh_url":"git@github.com:Tencent/wcdb.git","stars":9362},{"clone_url":"https://github.com/acidanthera/OpenCorePkg.git","ssh_url":"git@github.com:acidanthera/OpenCorePkg.git","stars":9347},{"clone_url":"https://github.com/phpredis/phpredis.git","ssh_url":"git@github.com:phpredis/phpredis.git","stars":9314},{"clone_url":"https://github.com/raysan5/raylib.git","ssh_url":"git@github.com:raysan5/raylib.git","stars":9252},{"clone_url":"https://github.com/fogleman/Craft.git","ssh_url":"git@github.com:fogleman/Craft.git","stars":9157},{"clone_url":"https://github.com/lvgl/lvgl.git","ssh_url":"git@github.com:lvgl/lvgl.git","stars":9087},{"clone_url":"https://github.com/upx/upx.git","ssh_url":"git@github.com:upx/upx.git","stars":9096},{"clone_url":"https://github.com/davatorium/rofi.git","ssh_url":"git@github.com:davatorium/rofi.git","stars":8962},{"clone_url":"https://github.com/raspberrypi/linux.git","ssh_url":"git@github.com:raspberrypi/linux.git","stars":8933},{"clone_url":"https://github.com/glfw/glfw.git","ssh_url":"git@github.com:glfw/glfw.git","stars":8939},{"clone_url":"https://github.com/videolan/vlc.git","ssh_url":"git@github.com:videolan/vlc.git","stars":8853},{"clone_url":"https://github.com/darlinghq/darling.git","ssh_url":"git@github.com:darlinghq/darling.git","stars":8836},{"clone_url":"https://github.com/SoftEtherVPN/SoftEtherVPN.git","ssh_url":"git@github.com:SoftEtherVPN/SoftEtherVPN.git","stars":8840},{"clone_url":"https://github.com/torch/torch7.git","ssh_url":"git@github.com:torch/torch7.git","stars":8704},{"clone_url":"https://github.com/libevent/libevent.git","ssh_url":"git@github.com:libevent/libevent.git","stars":8740},{"clone_url":"https://github.com/irungentoo/toxcore.git","ssh_url":"git@github.com:irungentoo/toxcore.git","stars":8668},{"clone_url":"https://github.com/huangz1990/redis-3.0-annotated.git","ssh_url":"git@github.com:huangz1990/redis-3.0-annotated.git","stars":8624},{"clone_url":"https://github.com/squeaky-pl/japronto.git","ssh_url":"git@github.com:squeaky-pl/japronto.git","stars":8547},{"clone_url":"https://github.com/libgit2/libgit2.git","ssh_url":"git@github.com:libgit2/libgit2.git","stars":8371},{"clone_url":"https://github.com/espressif/arduino-esp32.git","ssh_url":"git@github.com:espressif/arduino-esp32.git","stars":8427},{"clone_url":"https://github.com/EZLippi/Tinyhttpd.git","ssh_url":"git@github.com:EZLippi/Tinyhttpd.git","stars":8286},{"clone_url":"https://github.com/espressif/esp-idf.git","ssh_url":"git@github.com:espressif/esp-idf.git","stars":8288},{"clone_url":"https://github.com/ExistentialAudio/BlackHole.git","ssh_url":"git@github.com:ExistentialAudio/BlackHole.git","stars":8227},{"clone_url":"https://github.com/cesanta/mongoose.git","ssh_url":"git@github.com:cesanta/mongoose.git","stars":8161},{"clone_url":"https://github.com/id-Software/DOOM.git","ssh_url":"git@github.com:id-Software/DOOM.git","stars":8129},{"clone_url":"https://github.com/sumatrapdfreader/sumatrapdf.git","ssh_url":"git@github.com:sumatrapdfreader/sumatrapdf.git","stars":8046},{"clone_url":"https://github.com/microsoft/react-native-code-push.git","ssh_url":"git@github.com:microsoft/react-native-code-push.git","stars":8003},{"clone_url":"https://github.com/happyfish100/fastdfs.git","ssh_url":"git@github.com:happyfish100/fastdfs.git","stars":7951}]
+[
+    {
+        "clone_url": "https://github.com/torvalds/linux.git",
+        "ssh_url": "git@github.com:torvalds/linux.git",
+        "stars": 130437
+    },
+    {
+        "clone_url": "https://github.com/Genymobile/scrcpy.git",
+        "ssh_url": "git@github.com:Genymobile/scrcpy.git",
+        "stars": 64065
+    },
+    {
+        "clone_url": "https://github.com/netdata/netdata.git",
+        "ssh_url": "git@github.com:netdata/netdata.git",
+        "stars": 58878
+    },
+    {
+        "clone_url": "https://github.com/redis/redis.git",
+        "ssh_url": "git@github.com:redis/redis.git",
+        "stars": 54477
+    },
+    {
+        "clone_url": "https://github.com/git/git.git",
+        "ssh_url": "git@github.com:git/git.git",
+        "stars": 41792
+    },
+    {
+        "clone_url": "https://github.com/obsproject/obs-studio.git",
+        "ssh_url": "git@github.com:obsproject/obs-studio.git",
+        "stars": 37733
+    },
+    {
+        "clone_url": "https://github.com/php/php-src.git",
+        "ssh_url": "git@github.com:php/php-src.git",
+        "stars": 33632
+    },
+    {
+        "clone_url": "https://github.com/ventoy/Ventoy.git",
+        "ssh_url": "git@github.com:ventoy/Ventoy.git",
+        "stars": 33458
+    },
+    {
+        "clone_url": "https://github.com/wg/wrk.git",
+        "ssh_url": "git@github.com:wg/wrk.git",
+        "stars": 31758
+    },
+    {
+        "clone_url": "https://github.com/bilibili/ijkplayer.git",
+        "ssh_url": "git@github.com:bilibili/ijkplayer.git",
+        "stars": 30234
+    },
+    {
+        "clone_url": "https://github.com/FFmpeg/FFmpeg.git",
+        "ssh_url": "git@github.com:FFmpeg/FFmpeg.git",
+        "stars": 29119
+    },
+    {
+        "clone_url": "https://github.com/curl/curl.git",
+        "ssh_url": "git@github.com:curl/curl.git",
+        "stars": 24706
+    },
+    {
+        "clone_url": "https://github.com/tmux/tmux.git",
+        "ssh_url": "git@github.com:tmux/tmux.git",
+        "stars": 24420
+    },
+    {
+        "clone_url": "https://github.com/ggreer/the_silver_searcher.git",
+        "ssh_url": "git@github.com:ggreer/the_silver_searcher.git",
+        "stars": 23529
+    },
+    {
+        "clone_url": "https://github.com/cfenollosa/os-tutorial.git",
+        "ssh_url": "git@github.com:cfenollosa/os-tutorial.git",
+        "stars": 22777
+    },
+    {
+        "clone_url": "https://github.com/pjreddie/darknet.git",
+        "ssh_url": "git@github.com:pjreddie/darknet.git",
+        "stars": 22583
+    },
+    {
+        "clone_url": "https://github.com/emscripten-core/emscripten.git",
+        "ssh_url": "git@github.com:emscripten-core/emscripten.git",
+        "stars": 22107
+    },
+    {
+        "clone_url": "https://github.com/stedolan/jq.git",
+        "ssh_url": "git@github.com:stedolan/jq.git",
+        "stars": 21837
+    },
+    {
+        "clone_url": "https://github.com/coolsnowwolf/lede.git",
+        "ssh_url": "git@github.com:coolsnowwolf/lede.git",
+        "stars": 20787
+    },
+    {
+        "clone_url": "https://github.com/julycoding/The-Art-Of-Programming-By-July.git",
+        "ssh_url": "git@github.com:julycoding/The-Art-Of-Programming-By-July.git",
+        "stars": 20353
+    },
+    {
+        "clone_url": "https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System.git",
+        "ssh_url": "git@github.com:SamyPesse/How-to-Make-a-Computer-Operating-System.git",
+        "stars": 19801
+    },
+    {
+        "clone_url": "https://github.com/libuv/libuv.git",
+        "ssh_url": "git@github.com:libuv/libuv.git",
+        "stars": 19274
+    },
+    {
+        "clone_url": "https://github.com/robertdavidgraham/masscan.git",
+        "ssh_url": "git@github.com:robertdavidgraham/masscan.git",
+        "stars": 18842
+    },
+    {
+        "clone_url": "https://github.com/nothings/stb.git",
+        "ssh_url": "git@github.com:nothings/stb.git",
+        "stars": 18567
+    },
+    {
+        "clone_url": "https://github.com/Awesome-HarmonyOS/HarmonyOS.git",
+        "ssh_url": "git@github.com:Awesome-HarmonyOS/HarmonyOS.git",
+        "stars": 18456
+    },
+    {
+        "clone_url": "https://github.com/mpv-player/mpv.git",
+        "ssh_url": "git@github.com:mpv-player/mpv.git",
+        "stars": 18364
+    },
+    {
+        "clone_url": "https://github.com/openssl/openssl.git",
+        "ssh_url": "git@github.com:openssl/openssl.git",
+        "stars": 18162
+    },
+    {
+        "clone_url": "https://github.com/taosdata/TDengine.git",
+        "ssh_url": "git@github.com:taosdata/TDengine.git",
+        "stars": 18106
+    },
+    {
+        "clone_url": "https://github.com/pbatard/rufus.git",
+        "ssh_url": "git@github.com:pbatard/rufus.git",
+        "stars": 18079
+    },
+    {
+        "clone_url": "https://github.com/arendst/Tasmota.git",
+        "ssh_url": "git@github.com:arendst/Tasmota.git",
+        "stars": 17416
+    },
+    {
+        "clone_url": "https://github.com/facebook/zstd.git",
+        "ssh_url": "git@github.com:facebook/zstd.git",
+        "stars": 16738
+    },
+    {
+        "clone_url": "https://github.com/nginx/nginx.git",
+        "ssh_url": "git@github.com:nginx/nginx.git",
+        "stars": 16164
+    },
+    {
+        "clone_url": "https://github.com/radareorg/radare2.git",
+        "ssh_url": "git@github.com:radareorg/radare2.git",
+        "stars": 16105
+    },
+    {
+        "clone_url": "https://github.com/gentilkiwi/mimikatz.git",
+        "ssh_url": "git@github.com:gentilkiwi/mimikatz.git",
+        "stars": 15219
+    },
+    {
+        "clone_url": "https://github.com/allinurl/goaccess.git",
+        "ssh_url": "git@github.com:allinurl/goaccess.git",
+        "stars": 14595
+    },
+    {
+        "clone_url": "https://github.com/iovisor/bcc.git",
+        "ssh_url": "git@github.com:iovisor/bcc.git",
+        "stars": 14231
+    },
+    {
+        "clone_url": "https://github.com/micropython/micropython.git",
+        "ssh_url": "git@github.com:micropython/micropython.git",
+        "stars": 13997
+    },
+    {
+        "clone_url": "https://github.com/jarun/nnn.git",
+        "ssh_url": "git@github.com:jarun/nnn.git",
+        "stars": 13889
+    },
+    {
+        "clone_url": "https://github.com/vurtun/nuklear.git",
+        "ssh_url": "git@github.com:vurtun/nuklear.git",
+        "stars": 13418
+    },
+    {
+        "clone_url": "https://github.com/TheAlgorithms/C.git",
+        "ssh_url": "git@github.com:TheAlgorithms/C.git",
+        "stars": 13016
+    },
+    {
+        "clone_url": "https://github.com/timescale/timescaledb.git",
+        "ssh_url": "git@github.com:timescale/timescaledb.git",
+        "stars": 12871
+    },
+    {
+        "clone_url": "https://github.com/Foundry376/Mailspring.git",
+        "ssh_url": "git@github.com:Foundry376/Mailspring.git",
+        "stars": 12532
+    },
+    {
+        "clone_url": "https://github.com/hashcat/hashcat.git",
+        "ssh_url": "git@github.com:hashcat/hashcat.git",
+        "stars": 12372
+    },
+    {
+        "clone_url": "https://github.com/qmk/qmk_firmware.git",
+        "ssh_url": "git@github.com:qmk/qmk_firmware.git",
+        "stars": 12091
+    },
+    {
+        "clone_url": "https://github.com/arut/nginx-rtmp-module.git",
+        "ssh_url": "git@github.com:arut/nginx-rtmp-module.git",
+        "stars": 11785
+    },
+    {
+        "clone_url": "https://github.com/ish-app/ish.git",
+        "ssh_url": "git@github.com:ish-app/ish.git",
+        "stars": 11730
+    },
+    {
+        "clone_url": "https://github.com/memcached/memcached.git",
+        "ssh_url": "git@github.com:memcached/memcached.git",
+        "stars": 11676
+    },
+    {
+        "clone_url": "https://github.com/alibaba/tengine.git",
+        "ssh_url": "git@github.com:alibaba/tengine.git",
+        "stars": 11393
+    },
+    {
+        "clone_url": "https://github.com/s-matyukevich/raspberry-pi-os.git",
+        "ssh_url": "git@github.com:s-matyukevich/raspberry-pi-os.git",
+        "stars": 11339
+    },
+    {
+        "clone_url": "https://github.com/twitter/twemproxy.git",
+        "ssh_url": "git@github.com:twitter/twemproxy.git",
+        "stars": 11329
+    },
+    {
+        "clone_url": "https://github.com/openwrt/openwrt.git",
+        "ssh_url": "git@github.com:openwrt/openwrt.git",
+        "stars": 11213
+    },
+    {
+        "clone_url": "https://github.com/cloudwu/skynet.git",
+        "ssh_url": "git@github.com:cloudwu/skynet.git",
+        "stars": 11116
+    },
+    {
+        "clone_url": "https://github.com/koekeishiya/yabai.git",
+        "ssh_url": "git@github.com:koekeishiya/yabai.git",
+        "stars": 11046
+    },
+    {
+        "clone_url": "https://github.com/skywind3000/kcp.git",
+        "ssh_url": "git@github.com:skywind3000/kcp.git",
+        "stars": 11039
+    },
+    {
+        "clone_url": "https://github.com/google/brotli.git",
+        "ssh_url": "git@github.com:google/brotli.git",
+        "stars": 11005
+    },
+    {
+        "clone_url": "https://github.com/octalmage/robotjs.git",
+        "ssh_url": "git@github.com:octalmage/robotjs.git",
+        "stars": 10972
+    },
+    {
+        "clone_url": "https://github.com/reactos/reactos.git",
+        "ssh_url": "git@github.com:reactos/reactos.git",
+        "stars": 10838
+    },
+    {
+        "clone_url": "https://github.com/jonas/tig.git",
+        "ssh_url": "git@github.com:jonas/tig.git",
+        "stars": 10796
+    },
+    {
+        "clone_url": "https://github.com/swaywm/sway.git",
+        "ssh_url": "git@github.com:swaywm/sway.git",
+        "stars": 10413
+    },
+    {
+        "clone_url": "https://github.com/openresty/openresty.git",
+        "ssh_url": "git@github.com:openresty/openresty.git",
+        "stars": 10362
+    },
+    {
+        "clone_url": "https://github.com/woltapp/blurhash.git",
+        "ssh_url": "git@github.com:woltapp/blurhash.git",
+        "stars": 10351
+    },
+    {
+        "clone_url": "https://github.com/andlabs/libui.git",
+        "ssh_url": "git@github.com:andlabs/libui.git",
+        "stars": 10222
+    },
+    {
+        "clone_url": "https://github.com/jedisct1/libsodium.git",
+        "ssh_url": "git@github.com:jedisct1/libsodium.git",
+        "stars": 10063
+    },
+    {
+        "clone_url": "https://github.com/postgres/postgres.git",
+        "ssh_url": "git@github.com:postgres/postgres.git",
+        "stars": 10025
+    },
+    {
+        "clone_url": "https://github.com/h2o/h2o.git",
+        "ssh_url": "git@github.com:h2o/h2o.git",
+        "stars": 9930
+    },
+    {
+        "clone_url": "https://github.com/openresty/lua-nginx-module.git",
+        "ssh_url": "git@github.com:openresty/lua-nginx-module.git",
+        "stars": 9908
+    },
+    {
+        "clone_url": "https://github.com/webview/webview.git",
+        "ssh_url": "git@github.com:webview/webview.git",
+        "stars": 9869
+    },
+    {
+        "clone_url": "https://github.com/apple/darwin-xnu.git",
+        "ssh_url": "git@github.com:apple/darwin-xnu.git",
+        "stars": 9872
+    },
+    {
+        "clone_url": "https://github.com/SpacehuhnTech/esp8266_deauther.git",
+        "ssh_url": "git@github.com:SpacehuhnTech/esp8266_deauther.git",
+        "stars": 9867
+    },
+    {
+        "clone_url": "https://github.com/HandBrake/HandBrake.git",
+        "ssh_url": "git@github.com:HandBrake/HandBrake.git",
+        "stars": 9765
+    },
+    {
+        "clone_url": "https://github.com/haiwen/seafile.git",
+        "ssh_url": "git@github.com:haiwen/seafile.git",
+        "stars": 9596
+    },
+    {
+        "clone_url": "https://github.com/systemd/systemd.git",
+        "ssh_url": "git@github.com:systemd/systemd.git",
+        "stars": 9432
+    },
+    {
+        "clone_url": "https://github.com/Tencent/wcdb.git",
+        "ssh_url": "git@github.com:Tencent/wcdb.git",
+        "stars": 9362
+    },
+    {
+        "clone_url": "https://github.com/acidanthera/OpenCorePkg.git",
+        "ssh_url": "git@github.com:acidanthera/OpenCorePkg.git",
+        "stars": 9347
+    },
+    {
+        "clone_url": "https://github.com/phpredis/phpredis.git",
+        "ssh_url": "git@github.com:phpredis/phpredis.git",
+        "stars": 9314
+    },
+    {
+        "clone_url": "https://github.com/raysan5/raylib.git",
+        "ssh_url": "git@github.com:raysan5/raylib.git",
+        "stars": 9252
+    },
+    {
+        "clone_url": "https://github.com/fogleman/Craft.git",
+        "ssh_url": "git@github.com:fogleman/Craft.git",
+        "stars": 9157
+    },
+    {
+        "clone_url": "https://github.com/lvgl/lvgl.git",
+        "ssh_url": "git@github.com:lvgl/lvgl.git",
+        "stars": 9087
+    },
+    {
+        "clone_url": "https://github.com/upx/upx.git",
+        "ssh_url": "git@github.com:upx/upx.git",
+        "stars": 9096
+    },
+    {
+        "clone_url": "https://github.com/davatorium/rofi.git",
+        "ssh_url": "git@github.com:davatorium/rofi.git",
+        "stars": 8962
+    },
+    {
+        "clone_url": "https://github.com/raspberrypi/linux.git",
+        "ssh_url": "git@github.com:raspberrypi/linux.git",
+        "stars": 8933
+    },
+    {
+        "clone_url": "https://github.com/glfw/glfw.git",
+        "ssh_url": "git@github.com:glfw/glfw.git",
+        "stars": 8939
+    },
+    {
+        "clone_url": "https://github.com/videolan/vlc.git",
+        "ssh_url": "git@github.com:videolan/vlc.git",
+        "stars": 8853
+    },
+    {
+        "clone_url": "https://github.com/darlinghq/darling.git",
+        "ssh_url": "git@github.com:darlinghq/darling.git",
+        "stars": 8836
+    },
+    {
+        "clone_url": "https://github.com/SoftEtherVPN/SoftEtherVPN.git",
+        "ssh_url": "git@github.com:SoftEtherVPN/SoftEtherVPN.git",
+        "stars": 8840
+    },
+    {
+        "clone_url": "https://github.com/torch/torch7.git",
+        "ssh_url": "git@github.com:torch/torch7.git",
+        "stars": 8704
+    },
+    {
+        "clone_url": "https://github.com/libevent/libevent.git",
+        "ssh_url": "git@github.com:libevent/libevent.git",
+        "stars": 8740
+    },
+    {
+        "clone_url": "https://github.com/irungentoo/toxcore.git",
+        "ssh_url": "git@github.com:irungentoo/toxcore.git",
+        "stars": 8668
+    },
+    {
+        "clone_url": "https://github.com/huangz1990/redis-3.0-annotated.git",
+        "ssh_url": "git@github.com:huangz1990/redis-3.0-annotated.git",
+        "stars": 8624
+    },
+    {
+        "clone_url": "https://github.com/squeaky-pl/japronto.git",
+        "ssh_url": "git@github.com:squeaky-pl/japronto.git",
+        "stars": 8547
+    },
+    {
+        "clone_url": "https://github.com/libgit2/libgit2.git",
+        "ssh_url": "git@github.com:libgit2/libgit2.git",
+        "stars": 8371
+    },
+    {
+        "clone_url": "https://github.com/espressif/arduino-esp32.git",
+        "ssh_url": "git@github.com:espressif/arduino-esp32.git",
+        "stars": 8427
+    },
+    {
+        "clone_url": "https://github.com/EZLippi/Tinyhttpd.git",
+        "ssh_url": "git@github.com:EZLippi/Tinyhttpd.git",
+        "stars": 8286
+    },
+    {
+        "clone_url": "https://github.com/espressif/esp-idf.git",
+        "ssh_url": "git@github.com:espressif/esp-idf.git",
+        "stars": 8288
+    },
+    {
+        "clone_url": "https://github.com/ExistentialAudio/BlackHole.git",
+        "ssh_url": "git@github.com:ExistentialAudio/BlackHole.git",
+        "stars": 8227
+    },
+    {
+        "clone_url": "https://github.com/cesanta/mongoose.git",
+        "ssh_url": "git@github.com:cesanta/mongoose.git",
+        "stars": 8161
+    },
+    {
+        "clone_url": "https://github.com/id-Software/DOOM.git",
+        "ssh_url": "git@github.com:id-Software/DOOM.git",
+        "stars": 8129
+    },
+    {
+        "clone_url": "https://github.com/sumatrapdfreader/sumatrapdf.git",
+        "ssh_url": "git@github.com:sumatrapdfreader/sumatrapdf.git",
+        "stars": 8046
+    },
+    {
+        "clone_url": "https://github.com/microsoft/react-native-code-push.git",
+        "ssh_url": "git@github.com:microsoft/react-native-code-push.git",
+        "stars": 8003
+    },
+    {
+        "clone_url": "https://github.com/happyfish100/fastdfs.git",
+        "ssh_url": "git@github.com:happyfish100/fastdfs.git",
+        "stars": 7951
+    }
+]

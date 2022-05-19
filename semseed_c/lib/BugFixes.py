@@ -13,14 +13,14 @@ from lib.CodeAnalysis import SrcRange
 class MongoDB():
     def __init__(self) -> None:
 
-        with open('/Users/dominic/eth/01_SS22/AST_AutomatedSoftwareTesting/Project/SemSeed/database_config.json', 'r') as db_config_file:
+        with open('database_config.json', 'r') as db_config_file:
             db_config = json.load(db_config_file)
 
             uri = "mongodb://%s:%s@%s/?authMechanism=DEFAULT" % (
                 quote_plus(db_config['username']), quote_plus(db_config['password']), db_config['host'])
 
             self.client = MongoClient(uri)
-            self.db = self.client[db_config['c_database_name']]
+            self.db = self.client[db_config['database_name']]
 
     def get_commit(self, commit_id: str) -> Optional[Dict[str, Any]]:
         result = self.db.commits.find_one(
@@ -43,7 +43,6 @@ class MongoDB():
 
         # make single line changes serialisable
 
-        pprint(commit_id)
         single_line_changes = self.make_obj_serializble(single_line_changes)
         result = self.db.commits.update_one(
             {
@@ -53,7 +52,7 @@ class MongoDB():
                 '$set': {'single_line_changes': single_line_changes}
             }
         )
-        pprint(result.raw_result)
+        # print(result.raw_result)
 
 
 def test():

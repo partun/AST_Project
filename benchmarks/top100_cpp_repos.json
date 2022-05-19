@@ -1,0 +1,502 @@
+[
+    {
+        "clone_url": "https://github.com/tensorflow/tensorflow.git",
+        "ssh_url": "git@github.com:tensorflow/tensorflow.git",
+        "stars": 164434
+    },
+    {
+        "clone_url": "https://github.com/electron/electron.git",
+        "ssh_url": "git@github.com:electron/electron.git",
+        "stars": 101402
+    },
+    {
+        "clone_url": "https://github.com/microsoft/terminal.git",
+        "ssh_url": "git@github.com:microsoft/terminal.git",
+        "stars": 82631
+    },
+    {
+        "clone_url": "https://github.com/bitcoin/bitcoin.git",
+        "ssh_url": "git@github.com:bitcoin/bitcoin.git",
+        "stars": 63549
+    },
+    {
+        "clone_url": "https://github.com/opencv/opencv.git",
+        "ssh_url": "git@github.com:opencv/opencv.git",
+        "stars": 61191
+    },
+    {
+        "clone_url": "https://github.com/apple/swift.git",
+        "ssh_url": "git@github.com:apple/swift.git",
+        "stars": 59324
+    },
+    {
+        "clone_url": "https://github.com/pytorch/pytorch.git",
+        "ssh_url": "git@github.com:pytorch/pytorch.git",
+        "stars": 55517
+    },
+    {
+        "clone_url": "https://github.com/protocolbuffers/protobuf.git",
+        "ssh_url": "git@github.com:protocolbuffers/protobuf.git",
+        "stars": 54211
+    },
+    {
+        "clone_url": "https://github.com/godotengine/godot.git",
+        "ssh_url": "git@github.com:godotengine/godot.git",
+        "stars": 48483
+    },
+    {
+        "clone_url": "https://github.com/tesseract-ocr/tesseract.git",
+        "ssh_url": "git@github.com:tesseract-ocr/tesseract.git",
+        "stars": 44885
+    },
+    {
+        "clone_url": "https://github.com/x64dbg/x64dbg.git",
+        "ssh_url": "git@github.com:x64dbg/x64dbg.git",
+        "stars": 38413
+    },
+    {
+        "clone_url": "https://github.com/ocornut/imgui.git",
+        "ssh_url": "git@github.com:ocornut/imgui.git",
+        "stars": 37727
+    },
+    {
+        "clone_url": "https://github.com/grpc/grpc.git",
+        "ssh_url": "git@github.com:grpc/grpc.git",
+        "stars": 34053
+    },
+    {
+        "clone_url": "https://github.com/BVLC/caffe.git",
+        "ssh_url": "git@github.com:BVLC/caffe.git",
+        "stars": 32545
+    },
+    {
+        "clone_url": "https://github.com/nlohmann/json.git",
+        "ssh_url": "git@github.com:nlohmann/json.git",
+        "stars": 29797
+    },
+    {
+        "clone_url": "https://github.com/google/leveldb.git",
+        "ssh_url": "git@github.com:google/leveldb.git",
+        "stars": 28999
+    },
+    {
+        "clone_url": "https://github.com/ariya/phantomjs.git",
+        "ssh_url": "git@github.com:ariya/phantomjs.git",
+        "stars": 28804
+    },
+    {
+        "clone_url": "https://github.com/aria2/aria2.git",
+        "ssh_url": "git@github.com:aria2/aria2.git",
+        "stars": 26185
+    },
+    {
+        "clone_url": "https://github.com/google/googletest.git",
+        "ssh_url": "git@github.com:google/googletest.git",
+        "stars": 25668
+    },
+    {
+        "clone_url": "https://github.com/topjohnwu/Magisk.git",
+        "ssh_url": "git@github.com:topjohnwu/Magisk.git",
+        "stars": 25588
+    },
+    {
+        "clone_url": "https://github.com/rethinkdb/rethinkdb.git",
+        "ssh_url": "git@github.com:rethinkdb/rethinkdb.git",
+        "stars": 25350
+    },
+    {
+        "clone_url": "https://github.com/microsoft/calculator.git",
+        "ssh_url": "git@github.com:microsoft/calculator.git",
+        "stars": 24176
+    },
+    {
+        "clone_url": "https://github.com/CMU-Perceptual-Computing-Lab/openpose.git",
+        "ssh_url": "git@github.com:CMU-Perceptual-Computing-Lab/openpose.git",
+        "stars": 24002
+    },
+    {
+        "clone_url": "https://github.com/ClickHouse/ClickHouse.git",
+        "ssh_url": "git@github.com:ClickHouse/ClickHouse.git",
+        "stars": 23345
+    },
+    {
+        "clone_url": "https://github.com/facebook/rocksdb.git",
+        "ssh_url": "git@github.com:facebook/rocksdb.git",
+        "stars": 22383
+    },
+    {
+        "clone_url": "https://github.com/facebook/folly.git",
+        "ssh_url": "git@github.com:facebook/folly.git",
+        "stars": 21756
+    },
+    {
+        "clone_url": "https://github.com/mongodb/mongo.git",
+        "ssh_url": "git@github.com:mongodb/mongo.git",
+        "stars": 21522
+    },
+    {
+        "clone_url": "https://github.com/ApolloAuto/apollo.git",
+        "ssh_url": "git@github.com:ApolloAuto/apollo.git",
+        "stars": 20609
+    },
+    {
+        "clone_url": "https://github.com/Light-City/CPlusPlusThings.git",
+        "ssh_url": "git@github.com:Light-City/CPlusPlusThings.git",
+        "stars": 20532
+    },
+    {
+        "clone_url": "https://github.com/uglide/RedisDesktopManager.git",
+        "ssh_url": "git@github.com:uglide/RedisDesktopManager.git",
+        "stars": 20087
+    },
+    {
+        "clone_url": "https://github.com/apache/incubator-mxnet.git",
+        "ssh_url": "git@github.com:apache/incubator-mxnet.git",
+        "stars": 19953
+    },
+    {
+        "clone_url": "https://github.com/yuzu-emu/yuzu.git",
+        "ssh_url": "git@github.com:yuzu-emu/yuzu.git",
+        "stars": 19933
+    },
+    {
+        "clone_url": "https://github.com/v8/v8.git",
+        "ssh_url": "git@github.com:v8/v8.git",
+        "stars": 19432
+    },
+    {
+        "clone_url": "https://github.com/envoyproxy/envoy.git",
+        "ssh_url": "git@github.com:envoyproxy/envoy.git",
+        "stars": 19420
+    },
+    {
+        "clone_url": "https://github.com/mozilla/DeepSpeech.git",
+        "ssh_url": "git@github.com:mozilla/DeepSpeech.git",
+        "stars": 19423
+    },
+    {
+        "clone_url": "https://github.com/SerenityOS/serenity.git",
+        "ssh_url": "git@github.com:SerenityOS/serenity.git",
+        "stars": 19260
+    },
+    {
+        "clone_url": "https://github.com/TheAlgorithms/C-Plus-Plus.git",
+        "ssh_url": "git@github.com:TheAlgorithms/C-Plus-Plus.git",
+        "stars": 19120
+    },
+    {
+        "clone_url": "https://github.com/taichi-dev/taichi.git",
+        "ssh_url": "git@github.com:taichi-dev/taichi.git",
+        "stars": 18855
+    },
+    {
+        "clone_url": "https://github.com/osquery/osquery.git",
+        "ssh_url": "git@github.com:osquery/osquery.git",
+        "stars": 18833
+    },
+    {
+        "clone_url": "https://github.com/fish-shell/fish-shell.git",
+        "ssh_url": "git@github.com:fish-shell/fish-shell.git",
+        "stars": 18794
+    },
+    {
+        "clone_url": "https://github.com/PaddlePaddle/Paddle.git",
+        "ssh_url": "git@github.com:PaddlePaddle/Paddle.git",
+        "stars": 18033
+    },
+    {
+        "clone_url": "https://github.com/ossrs/srs.git",
+        "ssh_url": "git@github.com:ossrs/srs.git",
+        "stars": 17912
+    },
+    {
+        "clone_url": "https://github.com/google/flatbuffers.git",
+        "ssh_url": "git@github.com:google/flatbuffers.git",
+        "stars": 17781
+    },
+    {
+        "clone_url": "https://github.com/swoole/swoole-src.git",
+        "ssh_url": "git@github.com:swoole/swoole-src.git",
+        "stars": 17375
+    },
+    {
+        "clone_url": "https://github.com/facebook/hhvm.git",
+        "ssh_url": "git@github.com:facebook/hhvm.git",
+        "stars": 17242
+    },
+    {
+        "clone_url": "https://github.com/aseprite/aseprite.git",
+        "ssh_url": "git@github.com:aseprite/aseprite.git",
+        "stars": 17173
+    },
+    {
+        "clone_url": "https://github.com/microsoft/CNTK.git",
+        "ssh_url": "git@github.com:microsoft/CNTK.git",
+        "stars": 17149
+    },
+    {
+        "clone_url": "https://github.com/changkun/modern-cpp-tutorial.git",
+        "ssh_url": "git@github.com:changkun/modern-cpp-tutorial.git",
+        "stars": 17196
+    },
+    {
+        "clone_url": "https://github.com/flameshot-org/flameshot.git",
+        "ssh_url": "git@github.com:flameshot-org/flameshot.git",
+        "stars": 17155
+    },
+    {
+        "clone_url": "https://github.com/google/mediapipe.git",
+        "ssh_url": "git@github.com:google/mediapipe.git",
+        "stars": 17033
+    },
+    {
+        "clone_url": "https://github.com/ValveSoftware/Proton.git",
+        "ssh_url": "git@github.com:ValveSoftware/Proton.git",
+        "stars": 16965
+    },
+    {
+        "clone_url": "https://github.com/microsoft/winget-cli.git",
+        "ssh_url": "git@github.com:microsoft/winget-cli.git",
+        "stars": 16785
+    },
+    {
+        "clone_url": "https://github.com/facebookresearch/faiss.git",
+        "ssh_url": "git@github.com:facebookresearch/faiss.git",
+        "stars": 16771
+    },
+    {
+        "clone_url": "https://github.com/sqlitebrowser/sqlitebrowser.git",
+        "ssh_url": "git@github.com:sqlitebrowser/sqlitebrowser.git",
+        "stars": 16373
+    },
+    {
+        "clone_url": "https://github.com/ethereum/solidity.git",
+        "ssh_url": "git@github.com:ethereum/solidity.git",
+        "stars": 16334
+    },
+    {
+        "clone_url": "https://github.com/cocos2d/cocos2d-x.git",
+        "ssh_url": "git@github.com:cocos2d/cocos2d-x.git",
+        "stars": 16064
+    },
+    {
+        "clone_url": "https://github.com/electronicarts/CnC_Remastered_Collection.git",
+        "ssh_url": "git@github.com:electronicarts/CnC_Remastered_Collection.git",
+        "stars": 16055
+    },
+    {
+        "clone_url": "https://github.com/haoel/leetcode.git",
+        "ssh_url": "git@github.com:haoel/leetcode.git",
+        "stars": 15956
+    },
+    {
+        "clone_url": "https://github.com/notepad-plus-plus/notepad-plus-plus.git",
+        "ssh_url": "git@github.com:notepad-plus-plus/notepad-plus-plus.git",
+        "stars": 15764
+    },
+    {
+        "clone_url": "https://github.com/trojan-gfw/trojan.git",
+        "ssh_url": "git@github.com:trojan-gfw/trojan.git",
+        "stars": 15773
+    },
+    {
+        "clone_url": "https://github.com/simdjson/simdjson.git",
+        "ssh_url": "git@github.com:simdjson/simdjson.git",
+        "stars": 15486
+    },
+    {
+        "clone_url": "https://github.com/qbittorrent/qBittorrent.git",
+        "ssh_url": "git@github.com:qbittorrent/qBittorrent.git",
+        "stars": 15506
+    },
+    {
+        "clone_url": "https://github.com/facebook/yoga.git",
+        "ssh_url": "git@github.com:facebook/yoga.git",
+        "stars": 15151
+    },
+    {
+        "clone_url": "https://github.com/microsoft/react-native-windows.git",
+        "ssh_url": "git@github.com:microsoft/react-native-windows.git",
+        "stars": 14684
+    },
+    {
+        "clone_url": "https://github.com/pqrs-org/Karabiner-Elements.git",
+        "ssh_url": "git@github.com:pqrs-org/Karabiner-Elements.git",
+        "stars": 14481
+    },
+    {
+        "clone_url": "https://github.com/gabime/spdlog.git",
+        "ssh_url": "git@github.com:gabime/spdlog.git",
+        "stars": 14399
+    },
+    {
+        "clone_url": "https://github.com/Tencent/MMKV.git",
+        "ssh_url": "git@github.com:Tencent/MMKV.git",
+        "stars": 14376
+    },
+    {
+        "clone_url": "https://github.com/Tencent/ncnn.git",
+        "ssh_url": "git@github.com:Tencent/ncnn.git",
+        "stars": 14357
+    },
+    {
+        "clone_url": "https://github.com/fmtlib/fmt.git",
+        "ssh_url": "git@github.com:fmtlib/fmt.git",
+        "stars": 14033
+    },
+    {
+        "clone_url": "https://github.com/esp8266/Arduino.git",
+        "ssh_url": "git@github.com:esp8266/Arduino.git",
+        "stars": 13975
+    },
+    {
+        "clone_url": "https://github.com/apache/incubator-weex.git",
+        "ssh_url": "git@github.com:apache/incubator-weex.git",
+        "stars": 13954
+    },
+    {
+        "clone_url": "https://github.com/dogecoin/dogecoin.git",
+        "ssh_url": "git@github.com:dogecoin/dogecoin.git",
+        "stars": 13915
+    },
+    {
+        "clone_url": "https://github.com/google/filament.git",
+        "ssh_url": "git@github.com:google/filament.git",
+        "stars": 13846
+    },
+    {
+        "clone_url": "https://github.com/microsoft/LightGBM.git",
+        "ssh_url": "git@github.com:microsoft/LightGBM.git",
+        "stars": 13707
+    },
+    {
+        "clone_url": "https://github.com/xbmc/xbmc.git",
+        "ssh_url": "git@github.com:xbmc/xbmc.git",
+        "stars": 13699
+    },
+    {
+        "clone_url": "https://github.com/google/libphonenumber.git",
+        "ssh_url": "git@github.com:google/libphonenumber.git",
+        "stars": 13696
+    },
+    {
+        "clone_url": "https://github.com/ssloy/tinyrenderer.git",
+        "ssh_url": "git@github.com:ssloy/tinyrenderer.git",
+        "stars": 13556
+    },
+    {
+        "clone_url": "https://github.com/apache/incubator-brpc.git",
+        "ssh_url": "git@github.com:apache/incubator-brpc.git",
+        "stars": 13109
+    },
+    {
+        "clone_url": "https://github.com/MarlinFirmware/Marlin.git",
+        "ssh_url": "git@github.com:MarlinFirmware/Marlin.git",
+        "stars": 12982
+    },
+    {
+        "clone_url": "https://github.com/microsoft/AirSim.git",
+        "ssh_url": "git@github.com:microsoft/AirSim.git",
+        "stars": 12977
+    },
+    {
+        "clone_url": "https://github.com/keepassxreboot/keepassxc.git",
+        "ssh_url": "git@github.com:keepassxreboot/keepassxc.git",
+        "stars": 12770
+    },
+    {
+        "clone_url": "https://github.com/google/guetzli.git",
+        "ssh_url": "git@github.com:google/guetzli.git",
+        "stars": 12670
+    },
+    {
+        "clone_url": "https://github.com/lettier/3d-game-shaders-for-beginners.git",
+        "ssh_url": "git@github.com:lettier/3d-game-shaders-for-beginners.git",
+        "stars": 12709
+    },
+    {
+        "clone_url": "https://github.com/CoatiSoftware/Sourcetrail.git",
+        "ssh_url": "git@github.com:CoatiSoftware/Sourcetrail.git",
+        "stars": 12651
+    },
+    {
+        "clone_url": "https://github.com/onnx/onnx.git",
+        "ssh_url": "git@github.com:onnx/onnx.git",
+        "stars": 12393
+    },
+    {
+        "clone_url": "https://github.com/google/tink.git",
+        "ssh_url": "git@github.com:google/tink.git",
+        "stars": 12301
+    },
+    {
+        "clone_url": "https://github.com/arangodb/arangodb.git",
+        "ssh_url": "git@github.com:arangodb/arangodb.git",
+        "stars": 12240
+    },
+    {
+        "clone_url": "https://github.com/wkhtmltopdf/wkhtmltopdf.git",
+        "ssh_url": "git@github.com:wkhtmltopdf/wkhtmltopdf.git",
+        "stars": 12129
+    },
+    {
+        "clone_url": "https://github.com/Tencent/rapidjson.git",
+        "ssh_url": "git@github.com:Tencent/rapidjson.git",
+        "stars": 11965
+    },
+    {
+        "clone_url": "https://github.com/bkaradzic/bgfx.git",
+        "ssh_url": "git@github.com:bkaradzic/bgfx.git",
+        "stars": 11379
+    },
+    {
+        "clone_url": "https://github.com/EOSIO/eos.git",
+        "ssh_url": "git@github.com:EOSIO/eos.git",
+        "stars": 11341
+    },
+    {
+        "clone_url": "https://github.com/kyleneideck/BackgroundMusic.git",
+        "ssh_url": "git@github.com:kyleneideck/BackgroundMusic.git",
+        "stars": 11289
+    },
+    {
+        "clone_url": "https://github.com/apple/foundationdb.git",
+        "ssh_url": "git@github.com:apple/foundationdb.git",
+        "stars": 11237
+    },
+    {
+        "clone_url": "https://github.com/FreeCAD/FreeCAD.git",
+        "ssh_url": "git@github.com:FreeCAD/FreeCAD.git",
+        "stars": 11165
+    },
+    {
+        "clone_url": "https://github.com/davisking/dlib.git",
+        "ssh_url": "git@github.com:davisking/dlib.git",
+        "stars": 11092
+    },
+    {
+        "clone_url": "https://github.com/RPCS3/rpcs3.git",
+        "ssh_url": "git@github.com:RPCS3/rpcs3.git",
+        "stars": 11016
+    },
+    {
+        "clone_url": "https://github.com/ShiqiYu/libfacedetection.git",
+        "ssh_url": "git@github.com:ShiqiYu/libfacedetection.git",
+        "stars": 11015
+    },
+    {
+        "clone_url": "https://github.com/pybind/pybind11.git",
+        "ssh_url": "git@github.com:pybind/pybind11.git",
+        "stars": 10875
+    },
+    {
+        "clone_url": "https://github.com/facebook/watchman.git",
+        "ssh_url": "git@github.com:facebook/watchman.git",
+        "stars": 10826
+    },
+    {
+        "clone_url": "https://github.com/mobile-shell/mosh.git",
+        "ssh_url": "git@github.com:mobile-shell/mosh.git",
+        "stars": 10779
+    }
+]

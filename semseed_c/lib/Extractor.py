@@ -71,7 +71,7 @@ def rename_abstracted_changes(fixed_node: Dict[str, Any], buggy_node: Dict[str, 
     }
 
 
-def extract_bug_pattern(commit_id: str) -> None:
+def extract_bug_pattern(commit_id: str) -> str:
 
     # get the commit from mongodb
     mongo = MongoDB()
@@ -162,6 +162,7 @@ def extract_bug_pattern(commit_id: str) -> None:
             fixed_selected_node, buggy_selected_node)
 
     mongo.store_extracted_pattern(commit_id, commit['single_line_changes'])
+    return change['analysis_report']
 
 
 class Extractor(CodeAnalysis):
