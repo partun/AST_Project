@@ -74,15 +74,17 @@ def rename_abstracted_changes(fixed_node: Dict[str, Any], buggy_node: Dict[str, 
 def extract_bug_pattern(commit_id: str) -> str:
 
     # get the commit from mongodb
+
     mongo = MongoDB()
     commit = mongo.get_commit(commit_id)
     if commit is None:
         print(f'cloud not find commit with id: {commit_id}')
+        return 'cloud not find commit'
 
     for change in commit['single_line_changes']:
         change['analysis_report'] = 'Not Analysed'
 
-        repo = git.Repository(f"../{commit['local_repo_path']}")
+        repo = git.Repository(f"{commit['local_repo_path']}")
 
         """
         fixed file

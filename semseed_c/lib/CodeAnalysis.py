@@ -72,13 +72,18 @@ class CodeAnalysis:
     @classmethod
     def from_source(cls, path: str, code: bytes):
         # index = Index.create()
-
         ast = TranslationUnit.from_source(
             path,
-            args=['-Wall', '-/Users/dominic/eth/01_SS22/AST_AutomatedSoftwareTesting/Project/SemSeed/benchmarks/__top_c_repos/lvgl/src/draw/sdl'],
+            # args=['-Wall',
+            #       '/home/steiner/eth/01_SS22/AST_AutomatedSoftwareTesting/Project/SemSeed/benchmarks/__top_c_repos/proxychains-ng'
+            #       ],
             unsaved_files=[(path, code)]
         )
+        return cls(ast)
 
+    @classmethod
+    def from_file(cls, path: str):
+        ast = TranslationUnit.from_source(path)
         return cls(ast)
 
     @staticmethod

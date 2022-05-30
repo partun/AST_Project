@@ -56,7 +56,7 @@ def query_repo_save_commits(repo_path: str, query_terms: List, file_extension: s
     @param file_extension:
     @return:
     '''
-    from database import GitHubCommits as db
+    from lib.util import GitHubCommits as db
 
     repo = git.Repository(repo_path)
     remote_url = None
@@ -127,7 +127,7 @@ def query_repo_save_commits(repo_path: str, query_terms: List, file_extension: s
         remote_url=remote_url,
         total_commits=total_commits,
         selected_commits=selected_commits,
-        selection_rate=0 if total_commits == 0 else selected_commits/total_commits,
+        selection_rate=0 if total_commits == 0 else selected_commits / total_commits,
         selected_changes=selected_changes,
         reject_counter={reason.value: cnt for reason,
                         cnt in reject_counter.items()}
@@ -269,21 +269,21 @@ def parse_repos_extract_changes(git_repo_location, file_extension, query_terms,
 
 
 if __name__ == "__main__":
-    top_JS_repos_path = os.path.join('benchmarks', '__top_JavaScript_repos')
-    top_C_repos_path = os.path.join('benchmarks', '__top_c_repos')
+    # top_JS_repos_path = os.path.join('../benchmarks', '__top_JavaScript_repos')
+    top_C_repos_path = os.path.join('../benchmarks', '__top_c_repos')
     terms_to_search_in_commit_message = [
         'Bug', 'Fix', 'Error', 'Issue', 'Problem', 'Correct']
 
     print("Make sure MongoDB is running. On Ubuntu, you may use 'sudo systemctl start mongod' ")
 
     # Step 1: Extract and save all single line changes from the repos to the MongoDB database
-    parse_repos_extract_changes(git_repo_location=top_C_repos_path,
-                                file_extension='.c',
-                                query_terms=terms_to_search_in_commit_message,
-                                num_of_repos_to_parse=400,
-                                debug=False,
-                                max_commits=20000
-                                )
+    # parse_repos_extract_changes(git_repo_location=top_C_repos_path,
+    #                             file_extension='.c',
+    #                             query_terms=terms_to_search_in_commit_message,
+    #                             num_of_repos_to_parse=400,
+    #                             debug=False,
+    #                             max_commits=20000
+    #                             )
 
     # Step 2: After this has finished, call Node.js and create bug-seeding patterns.
-    create_patterns_from_commits(select_num_of_commits=-1)
+    create_patterns_from_commits(selected_commit_range=(3000, 3500))

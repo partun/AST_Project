@@ -29,11 +29,11 @@ class MongoDB():
         return result
 
     @staticmethod
-    def make_obj_serializble(obj: object) -> object:
+    def make_obj_serializable(obj: object) -> object:
         if isinstance(obj, dict):
-            return {MongoDB.make_obj_serializble(k): MongoDB.make_obj_serializble(v) for k, v in obj.items()}
+            return {MongoDB.make_obj_serializable(k): MongoDB.make_obj_serializable(v) for k, v in obj.items()}
         elif isinstance(obj, list) or isinstance(obj, set):
-            return [MongoDB.make_obj_serializble(v) for v in obj]
+            return [MongoDB.make_obj_serializable(v) for v in obj]
         elif isinstance(obj, SrcRange) or isinstance(obj, TokenKind) or isinstance(obj, CursorKind):
             return str(obj)
         else:
@@ -43,7 +43,7 @@ class MongoDB():
 
         # make single line changes serialisable
 
-        single_line_changes = self.make_obj_serializble(single_line_changes)
+        single_line_changes = self.make_obj_serializable(single_line_changes)
         result = self.db.commits.update_one(
             {
                 '_id': commit_id

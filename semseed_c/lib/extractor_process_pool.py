@@ -10,7 +10,6 @@ import json
 import multiprocessing
 from collections import Counter
 from multiprocessing import Pool
-from unittest import result
 from tqdm import tqdm
 import lib.util.GitHubCommits as db
 from lib.Extractor import extract_bug_pattern
@@ -23,9 +22,12 @@ def call_bug_extractor(commit_id) -> Optional[str]:
         print('error while extraction bug pattern')
         print(err)
         return None
+    except Exception as err:
+        print(err)
+        return 'exception'
 
 
-def create_patterns_from_commits(select_num_of_commits=-1):
+def create_patterns_from_commits(selected_commit_range=None):
     '''
     Query the MongoDB database and select only those commits (commit_ids) where the number of files
     changed is one and the changes are single line changes.
@@ -56,21 +58,21 @@ def create_patterns_from_commits(select_num_of_commits=-1):
     for pk in pks:
         commit_ids.append(pk['_id'])
 
-    if select_num_of_commits > 0:
+    if selected_commit_range is not None:
         print(
-            f"Selecting only {select_num_of_commits} commits of {len(commit_ids)} available commits")
-        commit_ids = commit_ids[:select_num_of_commits]
+            f"Selecting only commits in the range {selected_commit_range} of {len(commit_ids)} available commits")
+        commit_ids = commit_ids[selected_commit_range[0]:selected_commit_range[1]]
 
     # Parallel execution
-    results = Counter()
-    with Pool(processes=multiprocessing.cpu_count()) as p:
+    results_counter = Counter()
+    with Pool(processes=multiprocessing.cpu_count() * 0 + 12) as p:
         with tqdm(total=len(commit_ids)) as pbar:
             pbar.set_description_str(
                 desc="Extracting Patterns ", refresh=False)
             for i, result in tqdm(enumerate(p.imap_unordered(call_bug_extractor, commit_ids))):
                 pbar.update()
-                results.update((result,))
+                results_counter.update((result,))
             p.close()
             p.join()
 
-    print(results)
+    print(results_counter)
