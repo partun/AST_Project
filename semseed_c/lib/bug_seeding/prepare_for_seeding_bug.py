@@ -26,8 +26,6 @@ def prepare_a_js_file_for_seeding_bug(target_js_file_path: str, out_json_file_pa
     :return:
     """
 
-    # todo: maybe start timeout timer
-
     try:
         analyze_target_code(target_js_file_path, out_json_file_path)
     except Exception as err:
@@ -63,8 +61,8 @@ def prepare_a_js_file_for_seeding_bug_multiprocessing(arg):
 
 
 def prepare_dir_for_seeding_bugs(
-    target_js_dir: str, abstracted_out_dir: str, source_code_file_pattern: str,
-    num_of_files: int = -1
+        target_js_dir: str, abstracted_out_dir: str, source_code_file_pattern: str,
+        num_of_files: int = -1
 ) -> None:
     """
     Given a directory of JS files, format the code and run static analysis to extract nodes
@@ -117,8 +115,8 @@ def prepare_dir_for_seeding_bugs(
                 p.join()
     else:
         for target_file, out_file in tqdm(
-            target_js_files_and_out_paths,
-            desc='Preparing JS files *** Sequentially ***'
+                target_js_files_and_out_paths,
+                desc='Preparing JS files *** Sequentially ***'
         ):
             prepare_a_js_file_for_seeding_bug(
                 target_js_file_path=target_file, out_json_file_path=out_file)

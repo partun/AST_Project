@@ -20,16 +20,16 @@ def get_tokens_from_different_scopes(analysed_file: dict, kind: str, k_most_freq
     if kind == 'identifier':
         return {
             'all_identifiers_in_same_file': get_all_tokens_in_file(
-                analysed_file['range_to_identifier']),
+                analysed_file['range_to_idf']),
             # A mapping between the functions in the file and the containing Identifiers
-            'functions_to_identifiers': analysed_file['functions_to_identifiers'],
+            'functions_to_identifiers': analysed_file['functions_to_idf'],
             'K_most_frequent_identifiers': k_most_frequent  # 1000 most frequent Identifiers
         }
     else:
         return {
             'all_literals_in_same_file': get_all_tokens_in_file(
-                analysed_file['range_to_literal']),
+                analysed_file['range_to_lit']),
             # A mapping between the functions in the file and the containing Literals
-            'functions_to_literals': analysed_file['functions_to_literals'],
+            'functions_to_literals': analysed_file['functions_to_lit'],
             'K_most_frequent_literals': k_most_frequent  # 1000 most frequent Literals
         }

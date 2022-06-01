@@ -6,6 +6,8 @@ Created on 24-March-2020
 """
 from abc import ABC, abstractmethod
 from typing import List, Tuple
+from lib.CodeAnalysis import SrcRange
+from bisect import bisect_right, bisect_left
 
 
 class SeedBugs(ABC):
@@ -16,7 +18,7 @@ class SeedBugs(ABC):
             'file_name_where_intended': file_path,
             "target_token_sequence-Correct": target_location['tokens'],  # Abstract token sequence that will be mutated
             "target_token_sequence-Buggy": [],  # Concrete token sequence generated after mutation
-            "token_sequence_abstraction-Correct": target_location['abstractedTokens'],
+            "token_sequence_abstraction-Correct": target_location['abstracted_tokens'],
             "token_sequence_abstraction-Buggy": [],
             "target_line_range": {'line': target_location['line'], 'range': target_location['range']},
             "num_of_available_identifiers_to_choose_from": 0,
@@ -48,7 +50,7 @@ class SeedBugs(ABC):
 
     def extract_tokens_of_kinds(self, given_token_seq: List[str]) -> Tuple[List, List, List]:
         try:
-            assert len(given_token_seq) == len(self.target_location['abstractedTokens'])
+            assert len(given_token_seq) == len(self.target_location['abstracted_tokens'])
         except AssertionError as e:
             print("The lengths of these token sequences should be same")
 
@@ -59,7 +61,7 @@ class SeedBugs(ABC):
         idf_prefix = 'Idf_'
         lit_prefix = 'Lit_'
 
-        for i, abs_tok in enumerate(self.target_location['abstractedTokens']):
+        for i, abs_tok in enumerate(self.target_location['abstracted_tokens']):
             concrete_token = given_token_seq[i]
             if abs_tok.startswith(idf_prefix) or abs_tok.startswith(lit_prefix):
                 tokens.append(concrete_token)
@@ -81,19 +83,22 @@ class SeedBugs(ABC):
 
         assert len(token_list) == len(token_range_list)
 
-        start_range = self.target_location["range"][0]
-        end_range = self.target_location["range"][1]
+        target_range = SrcRange.from_str(self.target_location['range'])
 
-        indices_to_remove = [i for i, rng in enumerate(token_range_list) if int(rng.split(
-            '-')[0]) >= start_range and int(rng.split('-')[1]) <= end_range]
+        indices_to_remove = [
+            idx for idx, src_range in enumerate(map(SrcRange.from_str, token_range_list))
+            if target_range.encapsules(src_range)
+        ]
 
-        part1 = token_list[:indices_to_remove[0]]
-        part2 = token_list[indices_to_remove[-1] + 1:]
-
-        token_list_after_seeding = part1 + mutated_token_sequence + part2
-        assert len(token_list_after_seeding) == len(token_list) - len(self.target_location['tokens']) + len(
-            mutated_token_sequence)
+        token_before = token_list[:indices_to_remove[0]]
+        token_after = token_list[indices_to_remove[-1] + 1:]
+        token_list_after_seeding = token_before + mutated_token_sequence + token_after
+        assert len(token_list_after_seeding) == \
+               len(token_list) - len(self.target_location['tokens']) + len(mutated_token_sequence)
         return token_list_after_seeding
+
+    def get_target_locations(self):
+        return SrcRange.from_str(self.target_location['range'])
 
     def get_abstract_token_to_concrete_mapping(self) -> dict:
         """
@@ -101,7 +106,7 @@ class SeedBugs(ABC):
         Eg. 'Idf_1' -> 'a'
         """
         mappings = {}
-        for i, abstract_tok in enumerate(self.target_location['abstractedTokens']):
+        for i, abstract_tok in enumerate(self.target_location['abstracted_tokens']):
             if not abstract_tok.startswith('Idf_') and not abstract_tok.startswith('Lit_'):
                 continue
             mappings[abstract_tok] = self.target_location['tokens'][i]

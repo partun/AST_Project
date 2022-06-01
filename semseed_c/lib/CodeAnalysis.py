@@ -3,6 +3,7 @@ import stat
 from typing import Dict, Type, NamedTuple, Tuple, Optional, List
 from clang.cindex import Index, TranslationUnit, CursorKind, SourceLocation, SourceRange, TokenKind
 from pprint import pprint
+import re
 
 
 class SrcRange(NamedTuple):
@@ -18,6 +19,16 @@ class SrcRange(NamedTuple):
             src_range.end.line, src_range.end.column
         )
 
+    @classmethod
+    def from_str(cls, src_range_str: SourceRange):
+        match = re.search("(\d+):(\d+)-(\d+):(\d+)", src_range_str)
+        if match:
+            return cls(
+                start_line=int(match.group(1)), start_col=int(match.group(2)),
+                end_line=int(match.group(3)), end_col=int(match.group(4))
+            )
+        raise ValueError()
+
     def is_one_line(self) -> bool:
         """
         return true if src range spans only one line
@@ -26,12 +37,12 @@ class SrcRange(NamedTuple):
 
     def encapsules(self, other_range) -> bool:
         start_earlier = self.start_line < other_range.start_line or \
-            self.start_line == other_range.start_line and \
-            self.start_col <= other_range.start_col
+                        self.start_line == other_range.start_line and \
+                        self.start_col <= other_range.start_col
 
         ends_later = self.end_line > other_range.end_line or \
-            self.end_line == other_range.end_line and \
-            self.end_col >= other_range.end_col
+                     self.end_line == other_range.end_line and \
+                     self.end_col >= other_range.end_col
 
         return start_earlier and ends_later
 
@@ -77,13 +88,14 @@ class CodeAnalysis:
             # args=['-Wall',
             #       '/home/steiner/eth/01_SS22/AST_AutomatedSoftwareTesting/Project/SemSeed/benchmarks/__top_c_repos/proxychains-ng'
             #       ],
+            args=['-xcpp-output'],
             unsaved_files=[(path, code)]
         )
         return cls(ast)
 
     @classmethod
     def from_file(cls, path: str):
-        ast = TranslationUnit.from_source(path)
+        ast = TranslationUnit.from_source(path, args=['-xcpp-output'])
         return cls(ast)
 
     @staticmethod
@@ -130,6 +142,8 @@ class CodeAnalysis:
                     rec_traverse(child, func_name, src_range)
                 return
 
+            # if node.kind == CursorKind.IF_STMT:
+
             lit_type = self.is_literal(node.kind)
             if lit_type:
                 token_list = list(node.get_tokens())
@@ -147,7 +161,9 @@ class CodeAnalysis:
                     }
 
             elif node.kind == CursorKind.DECL_REF_EXPR or \
-                    node.kind == CursorKind.LABEL_REF:
+                    node.kind == CursorKind.LABEL_REF or \
+                    node.kind == CursorKind.VAR_DECL:
+                # print(f"{node.kind=} {node.displayname=} {node.spelling=}")
                 self.range_to_idf[src_range] = {
                     'name': node.displayname, 'line': line
                 }
@@ -156,7 +172,7 @@ class CodeAnalysis:
                 )
 
             # else:
-            #     print(node.kind)
+            # print(node.kind)
 
             for child in node.get_children():
                 rec_traverse(child, parent_func_name, parent_func_range)

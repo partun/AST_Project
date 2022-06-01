@@ -31,12 +31,12 @@ class SemSeedBugs(SeedBugs):
         self.identifiers_available_for_selecting_unbound_token = get_identifiers_given_scope_of_selection(
             available_idfs_in_scopes=available_identifiers,
             scope_of_selection=scope_of_selection,
-            target_function_range=target_location['belonging_function_range']
+            target_function_range=target_location['parent_func_range']
         )
         self.literals_available_for_selecting_unbound_token = get_literals_given_scope_of_selection(
             available_lits_in_scopes=available_literals,
             scope_of_selection=scope_of_selection,
-            target_function_range=target_location['belonging_function_range']
+            target_function_range=target_location['parent_func_range']
         )
         self.K = K
         self.SPECIAL_TOKEN = '__UNBOUND__TOKEN__'
@@ -46,14 +46,14 @@ class SemSeedBugs(SeedBugs):
         seeding_pattern = self.bug_seeding_pattern
 
         # Pure syntactic match only compares the abstracted tokens
-        if target['abstractedTokens'] != seeding_pattern['fix']:
+        if target['abstracted_tokens'] != seeding_pattern['fix']:
             return False
 
         seeding_pattern_correct_tok_seq = seeding_pattern['fix_actual']
         target_token_sequence = target['tokens']
 
         cosine_similarities = []
-        for i, abs_tok in enumerate(target['abstractedTokens']):
+        for i, abs_tok in enumerate(target['abstracted_tokens']):
             # Do not care about tokens that are not Identifiers or Literals
             if not abs_tok.startswith('Idf_') and not abs_tok.startswith('Lit_'):
                 continue
@@ -63,12 +63,15 @@ class SemSeedBugs(SeedBugs):
                 # If the tokens are exactly same, no point in doing anything else
                 similarity = 1.0
             else:
-                similarity = round(1 - get_cosine_distance_between_tokens(
-                    label1=seeding_pattern_correct_tok_seq[i], label2=target_token_sequence[i]), 3)
+                similarity = round(
+                    1 - get_cosine_distance_between_tokens(
+                        label1=seeding_pattern_correct_tok_seq[i], label2=target_token_sequence[i]
+                    ),
+                    3
+                )
             cosine_similarities.append(similarity)
 
         cosine_similarities = np.array(cosine_similarities)
-
         mean_similarity = np.mean(cosine_similarities)
 
         self.bug_metadata['mean_similarity'] = mean_similarity

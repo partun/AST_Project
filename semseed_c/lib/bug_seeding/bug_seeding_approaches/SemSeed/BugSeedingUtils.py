@@ -7,7 +7,7 @@ import scipy
 from typing import List
 import fasttext
 
-token_embedding = fasttext.load_model(path='benchmarks/all_token_embedding_FAST_TEXT.bin')
+token_embedding = fasttext.load_model(path='../benchmarks/all_token_embedding_FAST_TEXT.bin')
 
 
 def get_cosine_distance_between_tokens(label1, label2):

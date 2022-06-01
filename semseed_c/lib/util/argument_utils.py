@@ -20,31 +20,31 @@ def add_arguments_to_parser(parser: ArgumentParser) -> ArgumentParser:
     parser.add_argument(
         '--in_dir',
         type=str,
-        default='benchmarks/data',
+        default='../benchmarks/data',
         help='The directory containing files where bugs may be seeded'
     )
     parser.add_argument(
         '--out_dir',
         type=str,
-        default='benchmarks/js_benchmark_seeded_bugs',
+        default='../benchmarks/js_benchmark_seeded_bugs',
         help='The directory where the bug seeded files will written'
     )
     parser.add_argument(
         '--working_dir',
         type=str,
-        default='benchmarks/js_benchmark_working_dir',
+        default='../benchmarks/js_benchmark_working_dir',
         help='The directory where intermediate results will be written'
     )
     parser.add_argument(
         '--stats_dir',
         type=str,
-        default='benchmarks/js_benchmark_stats',
+        default='../benchmarks/js_benchmark_stats',
         help='The directory where statistics about bug seeding will be written'
     )
     parser.add_argument(
         '--bug_seeding_patterns',
         type=str,
-        default='benchmarks/test_pattern.json',
+        default='../benchmarks/bug_seeding_patterns.json',
         # default='benchmarks/bug_seeding_patterns.json',
         help='The path to a file that contains the change patterns'
     )
@@ -52,14 +52,14 @@ def add_arguments_to_parser(parser: ArgumentParser) -> ArgumentParser:
     parser.add_argument(
         '--K_freq_idf',
         type=str,
-        default='benchmarks/topK_identifiers_in_training_commits.json',
+        default='../benchmarks/topK_identifiers_in_training_commits.json',
         help='K most frequent Identifier'
     )
 
     parser.add_argument(
         '--K_freq_lit',
         type=str,
-        default='benchmarks/topK_literals_in_training_commits.json',
+        default='../benchmarks/topK_literals_in_training_commits.json',
         help='K most frequent Literal'
     )
 

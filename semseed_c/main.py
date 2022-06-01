@@ -23,7 +23,6 @@ from typing import Any, Dict, List, Tuple
 from lib.extractor_process_pool import create_patterns_from_commits
 from enum import Enum
 
-
 def get_git_repos_file_paths(source_dir):
     '''
 
@@ -286,4 +285,4 @@ if __name__ == "__main__":
     #                             )
 
     # Step 2: After this has finished, call Node.js and create bug-seeding patterns.
-    create_patterns_from_commits(selected_commit_range=(3000, 3500))
+    create_patterns_from_commits(selected_commit_range=(4500, 10000))

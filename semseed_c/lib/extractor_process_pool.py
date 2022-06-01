@@ -13,11 +13,14 @@ from multiprocessing import Pool
 from tqdm import tqdm
 import lib.util.GitHubCommits as db
 from lib.Extractor import extract_bug_pattern
+from lib.util.Watchdog import wrap_with_timeout, TimeoutException
 
 
 def call_bug_extractor(commit_id) -> Optional[str]:
     try:
-        return extract_bug_pattern(commit_id)
+        return wrap_with_timeout(extract_bug_pattern, timeout=30)(commit_id)
+    except TimeoutException:
+        return 'timeout'
     except StopAsyncIteration as err:
         print('error while extraction bug pattern')
         print(err)
@@ -65,7 +68,7 @@ def create_patterns_from_commits(selected_commit_range=None):
 
     # Parallel execution
     results_counter = Counter()
-    with Pool(processes=multiprocessing.cpu_count() * 0 + 12) as p:
+    with Pool(processes=multiprocessing.cpu_count()) as p:
         with tqdm(total=len(commit_ids)) as pbar:
             pbar.set_description_str(
                 desc="Extracting Patterns ", refresh=False)
