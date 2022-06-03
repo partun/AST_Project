@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from lib.Extractor import Extractor
 from lib.BugFixes import MongoDB
 from lib.util.Watchdog import set_timeout
@@ -21,7 +22,9 @@ def analyze_target_code(input_file_path: str, output_file_path: str) -> None:
         'file_path': input_file_path
     }
 
-    with open(output_file_path, 'w') as output_file:
+    output_path = Path(output_file_path)
+    output_path.parent.mkdir(exist_ok=True, parents=True)
+    with open(output_path, 'w') as output_file:
         json.dump(MongoDB.make_obj_serializable(result_obj), output_file)
 
 

@@ -11,9 +11,10 @@ from threading import Timer
 import lib.util.fileutils as fs
 from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
-from typing import List
+from typing import List, Tuple
 import random
 from pathlib import Path
+import glob
 from lib.bug_seeding.extract_node_data import analyze_target_code
 
 
@@ -61,9 +62,9 @@ def prepare_a_js_file_for_seeding_bug_multiprocessing(arg):
 
 
 def prepare_dir_for_seeding_bugs(
-        target_js_dir: str, abstracted_out_dir: str, source_code_file_pattern: str,
+        target_dir: str, abstracted_out_dir: str, file_extension: str,
         num_of_files: int = -1
-) -> None:
+) -> Tuple[List[Path], List[Path]]:
     """
     Given a directory of JS files, format the code and run static analysis to extract nodes
     from the code.
@@ -71,43 +72,50 @@ def prepare_dir_for_seeding_bugs(
     :param target_js_dir:
 
     :param abstracted_out_dir:
-    :return:
+    :return: list analysed target paths, list non target paths
     """
     fs.create_dir_list_if_not_present([abstracted_out_dir])
 
-    print(" Reading  files in {}".format(target_js_dir))
-    all_target_js_files = sorted(Path(target_js_dir).rglob(source_code_file_pattern))
-    all_target_js_files = [str(pth) for pth in all_target_js_files if pth.is_file()]
+    target_files = []
+    non_target_files = []
+    for path_str in glob.glob(f'{target_dir}/**', recursive=True):
+        path = Path(path_str)
+        if not path.is_file():
+            # do not include directories
+            continue
 
-    # Some datasets might have duplicate files. We want to remove the duplicates
-    # We do not need to remove duplicates
-    # print(" Removing duplicates from {} files in benchmarks".format(len(all_target_js_files)))
-    # duplicate_file_groups = fs.read_json_file('benchmarks/js150-duplicates.json')
-    # all_target_js_files = remove_duplicates(
-    #     file_list=all_target_js_files, duplicate_file_groups=duplicate_file_groups)
+        if path_str.endswith(file_extension):
+            target_files.append(path)
+        else:
+            non_target_files.append(path)
 
     if num_of_files > 1:
         random.seed(100)
-        random.shuffle(all_target_js_files)
-        all_target_js_files = all_target_js_files[:num_of_files]
-    print(" Total number of files in benchmark is {}".format(len(all_target_js_files)))
+        random.shuffle(target_files)
+        filtered_target_files = target_files[:num_of_files]
+        non_target_files.extend(target_files[num_of_files:])
+    else:
+        filtered_target_files = target_files
 
-    def create_out_file_path(target_js_file_path: str) -> str:
-        pure_file_name = os.path.splitext(os.path.basename(target_js_file_path))[0]
-        return os.path.join(abstracted_out_dir, f'{pure_file_name}.json')
+    print(f"target files: {filtered_target_files}")
+    print(f"non target files: {non_target_files}")
 
-    target_js_files_and_out_paths = [
-        (target_js_file_path, create_out_file_path(target_js_file_path))
-        for target_js_file_path in all_target_js_files
+    def create_out_file_path(target_path: Path) -> str:
+        return str(target_path).replace(target_dir, abstracted_out_dir).replace(file_extension, '.json')
+
+    analysis_output_paths = [
+        (str(path), create_out_file_path(path))
+        for path in filtered_target_files
     ]
+
     if cpu_count() > 4:
         with Pool(processes=cpu_count()) as p:
-            with tqdm(total=len(all_target_js_files)) as pbar:
+            with tqdm(total=len(analysis_output_paths)) as pbar:
                 pbar.set_description_str(desc="Preparing files ...", refresh=False)
                 for i, execution_errors in tqdm(
                         enumerate(p.imap_unordered(
                             prepare_a_js_file_for_seeding_bug_multiprocessing,
-                            target_js_files_and_out_paths, chunksize=10
+                            analysis_output_paths, chunksize=10
                         ))):
                     # print(execution_errors)
                     pbar.update()
@@ -115,8 +123,10 @@ def prepare_dir_for_seeding_bugs(
                 p.join()
     else:
         for target_file, out_file in tqdm(
-                target_js_files_and_out_paths,
-                desc='Preparing JS files *** Sequentially ***'
+                analysis_output_paths,
+                desc='Preparing files *** Sequentially ***'
         ):
             prepare_a_js_file_for_seeding_bug(
                 target_js_file_path=target_file, out_json_file_path=out_file)
+
+    return [Path(x[1]) for x in analysis_output_paths], non_target_files

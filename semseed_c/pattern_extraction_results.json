@@ -1,0 +1,12 @@
+{
+  "fixed_Node_not_found": 5853,
+  "success": 2328,
+  "neither_Node_not_found": 433,
+  "fixed_File_not_parsable": 409,
+  "timeout": 363,
+  "buggy_Node_not_found": 136,
+  "exception": 78,
+  "buggy_File_not_parsable": 1,
+  "execution_time": "00:20:42",
+  "total": 9601
+}

@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Tuple
 from lib.extractor_process_pool import create_patterns_from_commits
 from enum import Enum
 
+
 def get_git_repos_file_paths(source_dir):
     '''
 
@@ -129,7 +130,7 @@ def query_repo_save_commits(repo_path: str, query_terms: List, file_extension: s
         selection_rate=0 if total_commits == 0 else selected_commits / total_commits,
         selected_changes=selected_changes,
         reject_counter={reason.value: cnt for reason,
-                        cnt in reject_counter.items()}
+                                              cnt in reject_counter.items()}
     )
     cm.save()
 
@@ -181,7 +182,7 @@ def extract_single_line_changes(diff, file_filter) -> Tuple[Dict[str, Any], Reje
                             'path': new_file_path,
                             'line_num': lin.new_lineno,
                             'changed_line': lin.content
-                            }
+                        }
                     })
     return single_line_changes, RejectReason.Selected
 
@@ -285,4 +286,4 @@ if __name__ == "__main__":
     #                             )
 
     # Step 2: After this has finished, call Node.js and create bug-seeding patterns.
-    create_patterns_from_commits(selected_commit_range=(4500, 10000))
+    create_patterns_from_commits(selected_commit_range=(0, 10000))

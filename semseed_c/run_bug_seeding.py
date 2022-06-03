@@ -34,7 +34,7 @@ if __name__ == '__main__':
         description="Provide the proper directories where bugs may be seeded",
         epilog="You must provide directories"
     )
-    in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_idf, k_freq_lit = read_arguments(parser)
+    in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension = read_arguments(parser)
 
     # print("Sampling files for using as target to seed bugs")
     # fs.sample_from_zip(zip_file_path='benchmarks/data.zip', out_dir=in_dir, file_extension_to_sample='.js',
@@ -56,32 +56,28 @@ if __name__ == '__main__':
     # bug_seeding_patterns = select_particular_type_of_seeding_pattern(bug_seeding_patterns=bug_seeding_patterns)
     print("There are {} bug seeding patterns".format(len(bug_seeding_patterns)))
 
-    # More intermediate directories needed
-    static_analysis_out_dir = os.path.join(working_dir, '__TEMP__target_js_file_nodes')
-
     print("Preparing for bug seeding")
-    prepare_dir_for_seeding_bugs(
-        target_js_dir=in_dir, abstracted_out_dir=static_analysis_out_dir,
-        source_code_file_pattern='*.c', num_of_files=-1)
+    analysed_target_paths, non_target_paths = prepare_dir_for_seeding_bugs(
+        target_dir=in_dir, abstracted_out_dir=working_dir,
+        file_extension=file_extension, num_of_files=-1)
 
     # Maximum number of tries to seed bugs per file. We could be always successful and seed 10 bugs or 0
-    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = -1  # If -1 then try to seed everywhere
+    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 20  # If -1 then try to seed everywhere
+    MAX_BUGS_TO_SEED = 3
     actual_mutations_in_each_file = []
 
     # Now seed bugs
-    K_most_frequent_identifiers = fs.read_json_file(k_freq_idf)
     K_most_frequent_literals = fs.read_json_file(k_freq_lit)
-    analysed_files = fs.go_through_dir(directory=static_analysis_out_dir, filter_file_extension='.json')
 
     args_for_files = [
-        (file, bug_seeding_patterns, K_most_frequent_identifiers, K_most_frequent_literals,
-         MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS, out_dir) for
-        file in analysed_files]
+        (str(path), bug_seeding_patterns, K_most_frequent_literals,
+         MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS, MAX_BUGS_TO_SEED, in_dir, out_dir) for
+        path in analysed_target_paths]
 
     # Multiprocessing only on machine with many CPUs
     if cpu_count() > 4:
         with Pool(processes=cpu_count()) as p:
-            with tqdm(total=len(analysed_files)) as pbar:
+            with tqdm(total=len(args_for_files)) as pbar:
                 pbar.set_description_str(
                     desc="Seeding bugs to files ", refresh=False)
                 for i, successful_mutations in tqdm(
@@ -93,12 +89,9 @@ if __name__ == '__main__':
                 p.join()
     else:
         # Non multiprocessing
-        for file in tqdm(analysed_files, desc='Seeding bugs to files', position=0, postfix={'approach': 'SemSeed'}):
-            successful_mutations = seed_bugs_to_a_file(file, bug_seeding_patterns, K_most_frequent_identifiers,
-                                                       K_most_frequent_literals,
-                                                       MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS, out_dir)
+        for args in tqdm(args_for_files, desc='Seeding bugs to files', position=0, postfix={'approach': 'SemSeed'}):
+            successful_mutations = seed_bugs_to_a_file(*args)
             actual_mutations_in_each_file.append(successful_mutations)
 
     print("\n *** Bugs could be seeded in {}/{} files output directory is '{}' ***".format(
-        np.count_nonzero(actual_mutations_in_each_file),
-        len(analysed_files), out_dir))
+        np.count_nonzero(actual_mutations_in_each_file), len(analysed_target_paths), in_dir, out_dir))

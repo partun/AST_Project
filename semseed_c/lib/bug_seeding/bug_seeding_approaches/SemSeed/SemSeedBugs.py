@@ -28,15 +28,10 @@ class SemSeedBugs(SeedBugs):
         """
         super().__init__(bug_seeding_pattern=bug_seeding_pattern, target_location=target_location, file_path=file_path)
         self.similarity_threshold = similarity_threshold
-        self.identifiers_available_for_selecting_unbound_token = get_identifiers_given_scope_of_selection(
-            available_idfs_in_scopes=available_identifiers,
-            scope_of_selection=scope_of_selection,
-            target_function_range=target_location['parent_func_range']
-        )
-        self.literals_available_for_selecting_unbound_token = get_literals_given_scope_of_selection(
-            available_lits_in_scopes=available_literals,
-            scope_of_selection=scope_of_selection,
-            target_function_range=target_location['parent_func_range']
+        self.identifiers_available_for_selecting_unbound_token = set(
+            available_identifiers[target_location['parent_func_range']])
+        self.literals_available_for_selecting_unbound_token = set(
+            available_literals['K_most_frequent_literals'] + available_literals['all_literals_in_same_file']
         )
         self.K = K
         self.SPECIAL_TOKEN = '__UNBOUND__TOKEN__'
