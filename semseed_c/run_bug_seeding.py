@@ -18,6 +18,7 @@ from lib.bug_seeding.seed_bugs_to_a_file import seed_bugs_to_a_file, seed_bugs_t
 import numpy as np
 
 
+
 def select_particular_type_of_seeding_pattern(bug_seeding_patterns):
     # Select only 'Wrong Binary Operand' patterns
     # bug_seeding_patterns = find_wrong_operand_in_binary_op_patterns(bug_seeding_patterns)
@@ -28,13 +29,19 @@ def select_particular_type_of_seeding_pattern(bug_seeding_patterns):
 
 
 if __name__ == '__main__':
-
+    
+    
     parser = argparse.ArgumentParser(
         prog='python run_bug_seeding.py',
         description="Provide the proper directories where bugs may be seeded",
         epilog="You must provide directories"
     )
     in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension = read_arguments(parser)
+    
+    # delete bugs
+    open('../benchmarks/bugs.txt', 'w').close()
+    
+    
 
     # print("Sampling files for using as target to seed bugs")
     # fs.sample_from_zip(zip_file_path='benchmarks/data.zip', out_dir=in_dir, file_extension_to_sample='.js',
@@ -92,6 +99,7 @@ if __name__ == '__main__':
         for args in tqdm(args_for_files, desc='Seeding bugs to files', position=0, postfix={'approach': 'SemSeed'}):
             successful_mutations = seed_bugs_to_a_file(*args)
             actual_mutations_in_each_file.append(successful_mutations)
-
+    
+    
     print("\n *** Bugs could be seeded in {}/{} files output directory is '{}' ***".format(
         np.count_nonzero(actual_mutations_in_each_file), len(analysed_target_paths), in_dir, out_dir))

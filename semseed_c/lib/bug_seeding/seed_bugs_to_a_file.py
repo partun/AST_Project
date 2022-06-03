@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import List
 import os
 import jsbeautifier
+from random import randrange
+import shutil
 
 random.seed(a=42)
 
@@ -113,6 +115,7 @@ def seed_bugs_to_a_file(file: str,
             original_file.readlines(),
             start=1
         ))
+        bug_ids = []
         for bug_idx, bug_seeding in enumerate(
                 sorted(selected_locations.values(), key=lambda x: x.get_target_locations().start_line)):
             # The mutated token sequences is only the 'mutated' target location token sequence
@@ -158,6 +161,9 @@ def seed_bugs_to_a_file(file: str,
 
                             mutated_file = mutated_file_lines.setdefault(ms_idx, [])
                             mutated_file.append(f'// MODIFICATION {bug_idx} START\n')
+                            bug_id = randrange(100000000)
+                            bug_ids.append(bug_id)
+                            mutated_file.append(f'reached({bug_id});\n')
                             mutated_file.append(
                                 '// ORIGINAL LINE: "{}"\n'.format(original_line.replace("\n", ""))
                             )
@@ -171,6 +177,7 @@ def seed_bugs_to_a_file(file: str,
 
                 except StopIteration:
                     print('ERROR: file was finished before last bug')
+        
 
         # finish copying the original file
         while True:
@@ -182,13 +189,26 @@ def seed_bugs_to_a_file(file: str,
                 break
 
         for ms_idx, lines in mutated_file_lines.items():
+            reached_h = os.getcwd()/Path(out_dir).parent/Path("reached-detector.h")
+            lines.insert(0,f"#include \"{reached_h}\"\n")
             mutated_file_path = Path(target_file_path.replace(
                 in_dir, f'{out_dir}/__mutated_version_{ms_idx}'
             ))
-            # create parent folders if they do not exist
-            mutated_file_path.parent.mkdir(exist_ok=True, parents=True)
+            #copy everything over
+            if not os.path.isdir(mutated_file_path.parent):
+                shutil.copytree(in_dir, mutated_file_path.parent)
+            
             with open(mutated_file_path, 'w') as mutated_file:
                 mutated_file.writelines(lines)
+            
+            
+        with open("../benchmarks/bugs.txt", 'a') as bugs_file:
+            line = ""
+            for bug_id in bug_ids:
+                line += f'{str(bug_id)}:0,'
+                
+            bugs_file.write(line)
+            
 
         for ms_idx, stats in bug_seeded_meta_data.items():
             meta_file_path = Path(target_file_path.replace(
