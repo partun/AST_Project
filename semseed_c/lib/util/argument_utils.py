@@ -52,7 +52,7 @@ def add_arguments_to_parser(parser: ArgumentParser) -> ArgumentParser:
     parser.add_argument(
         '--K_freq_lit',
         type=str,
-        default='../benchmarks/topK_literals_in_training_commits.json',
+        default='../benchmarks/topK_c_literals.json',
         help='K most frequent Literal'
     )
 
