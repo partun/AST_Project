@@ -12,7 +12,6 @@ from tqdm import tqdm
 from pathlib import Path
 from typing import List
 import os
-import jsbeautifier
 from random import randrange
 import shutil
 
@@ -125,6 +124,9 @@ def seed_bugs_to_a_file(file: str,
             if len(mutated_token_sequences) <= 0:
                 continue
 
+            bug_id = randrange(100000000)
+            bug_ids.append(bug_id)
+
             # store meta date for the seeded bugs
             for ms_idx, mutated_sequence in enumerate(mutated_token_sequences):
                 # token_sequence_after_seeding_bug = bug_seeding.replace_target_with_mutated_token_sequence(
@@ -134,6 +136,7 @@ def seed_bugs_to_a_file(file: str,
 
                 bug_seeded_meta_data.setdefault(ms_idx, []).append({
                     'index': ms_idx,
+                    'bug_id': bug_id,
                     'range': str(target_location),
                     'target_token_sequence-Buggy': mutated_sequence,
                     'token_sequence_abstraction-Buggy': bug_seeding.bug_seeding_pattern['buggy'],
@@ -159,9 +162,7 @@ def seed_bugs_to_a_file(file: str,
                             # modify line
 
                             mutated_file = mutated_file_lines.setdefault(ms_idx, [])
-                            mutated_file.append(f'// MODIFICATION {bug_idx} START\n')
-                            bug_id = randrange(100000000)
-                            bug_ids.append(bug_id)
+                            mutated_file.append(f'// MODIFICATION {bug_id} START\n')
                             mutated_file.append(f'reached({bug_id});\n')
                             mutated_file.append(
                                 '// ORIGINAL LINE: "{}"\n'.format(original_line.replace("\n", ""))
@@ -169,7 +170,7 @@ def seed_bugs_to_a_file(file: str,
                             mutated_file.append(
                                 f'{before_modification} {" ".join(mutated_sequence)} {after_modification}'
                             )
-                            mutated_file.append(f'// MODIFICATION {bug_idx} END\n')
+                            mutated_file.append(f'// MODIFICATION {bug_id} END\n')
 
                         # done with this bug
                         break
@@ -189,8 +190,7 @@ def seed_bugs_to_a_file(file: str,
         
         # add reached header file
         for ms_idx, lines in mutated_file_lines.items():
-            reached_h = os.getcwd()/Path(out_dir).parent/Path("reached-detector.h")
-            lines.insert(0,f"#include \"{reached_h}\"\n")
+            lines.insert(0,"#include <reached-detector.c>\n")
             mutated_file_path = Path(target_file_path.replace(
                 in_dir, f'{out_dir}/__mutated_version_{ms_idx}'
             )) 
@@ -198,7 +198,7 @@ def seed_bugs_to_a_file(file: str,
                 mutated_file.writelines(lines)
             
             
-        with open("../benchmarks/bugs.txt", 'a') as bugs_file:
+        with open("../benchmarks/bug_seeding_output/bugs.txt", 'a') as bugs_file:
             line = ""
             for bug_id in bug_ids:
                 line += f'{str(bug_id)}:0,'
