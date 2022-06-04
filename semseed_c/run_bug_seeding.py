@@ -31,20 +31,10 @@ def select_particular_type_of_seeding_pattern(bug_seeding_patterns):
     return bug_seeding_patterns
 
 
-if __name__ == '__main__':
     
+def run_bug_seeding(in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension):    
     
-    parser = argparse.ArgumentParser(
-        prog='python run_bug_seeding.py',
-        description="Provide the proper directories where bugs may be seeded",
-        epilog="You must provide directories"
-    )
-    in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension = read_arguments(parser)
-    
-    # delete bugs
-    open('../benchmarks/bugs.txt', 'w').close()
-    
-    
+
 
     # print("Sampling files for using as target to seed bugs")
     # fs.sample_from_zip(zip_file_path='benchmarks/data.zip', out_dir=in_dir, file_extension_to_sample='.js',
@@ -67,15 +57,23 @@ if __name__ == '__main__':
     print("There are {} bug seeding patterns".format(len(bug_seeding_patterns)))
 
     # Maximum number of tries to seed bugs per file. We could be always successful and seed 10 bugs or 0
-    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 50  # If -1 then try to seed everywhere
+    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 200  # If -1 then try to seed everywhere
     MAX_BUGS_TO_SEED = 1
-    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 2
+    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 1
     
     print("Preparing for bug seeding")
     analysed_target_paths, non_target_paths = prepare_dir_for_seeding_bugs(
         target_dir=in_dir, abstracted_out_dir=working_dir,
         file_extension=file_extension, num_of_files=1)
-
+    
+    # remove old bug.txt file
+    reached_bug_file_path = '../benchmarks/bug_seeding_output/bugs.txt'
+    if os.path.exists(reached_bug_file_path):
+        if os.path.isfile(reached_bug_file_path):
+            os.remove(reached_bug_file_path)
+        else:
+            print('ERROR: reached bug file is not a file')
+            exit(1)
 
     for i in range(ATTEMPTS_TO_FILL_UNBOUND_TOKENS):
         #copy everything over
@@ -118,3 +116,13 @@ if __name__ == '__main__':
     
     print("\n *** Bugs could be seeded in {}/{} files output directory is '{}' ***".format(
         np.count_nonzero(actual_mutations_in_each_file), len(analysed_target_paths), in_dir, out_dir))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        prog='python run_bug_seeding.py',
+        description="Provide the proper directories where bugs may be seeded",
+        epilog="You must provide directories"
+    )
+    in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension = read_arguments(parser)
+    run_bug_seeding()

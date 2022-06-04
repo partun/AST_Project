@@ -4,6 +4,7 @@ from typing import Dict, Type, NamedTuple, Tuple, Optional, List
 from clang.cindex import Index, TranslationUnit, CursorKind, SourceLocation, SourceRange, TokenKind
 from pprint import pprint
 import re
+from random import randrange
 
 
 class SrcRange(NamedTuple):
@@ -98,6 +99,19 @@ class CodeAnalysis:
         ast = TranslationUnit.from_source(path, args=['-xcpp-output', '-fdirectives-only'])
         return cls(ast)
 
+    @classmethod
+    def from_file_isolated(cls, path: str):
+        with open(path, 'r') as source_file:
+            code = source_file.read()
+        
+            tmp_path = f'/tmp/source_file_{randrange(1293012)}.c'
+            ast = TranslationUnit.from_source(
+                tmp_path,
+                args=['-xcpp-output'],
+                unsaved_files=[(tmp_path, code)]
+            )
+            return cls(ast)
+
     @staticmethod
     def is_literal(kind: CursorKind) -> Optional[str]:
         if kind == CursorKind.INTEGER_LITERAL:
@@ -173,7 +187,7 @@ class CodeAnalysis:
                 )
 
             elif node.kind == CursorKind.UNEXPOSED_EXPR:
-                print(f'param: {list(map(lambda x: x.spelling, node.get_tokens()))}')
+                # print(f'param: {list(map(lambda x: x.spelling, node.get_tokens()))}')
                 for token in node.get_tokens():
                     if token.kind == TokenKind.IDENTIFIER:
                         token_src_range = SrcRange.form_source_range(token.extent)

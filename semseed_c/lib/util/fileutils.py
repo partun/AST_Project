@@ -73,7 +73,7 @@ def writeJSONFile(data: Any, file_path: str) -> Any:
     try:
         # print("Writing JSON file "+file_path)
         json.dump(data, codecs.open(file_path, 'w', encoding='utf-8'),
-                  separators=(',', ':'))
+                  separators=(',', ':'), indent=4)
     except:
         print("Could not write to " + file_path)
 

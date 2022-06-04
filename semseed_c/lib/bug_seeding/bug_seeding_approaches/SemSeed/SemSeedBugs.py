@@ -30,26 +30,21 @@ class SemSeedBugs(SeedBugs):
         self.similarity_threshold = similarity_threshold
 
         self.failed_getting_idf = False
-        try:
-            self.identifiers_available_for_selecting_unbound_token = set(
-                available_identifiers[target_location['parent_func_range']])
+        self.identifiers_available_for_selecting_unbound_token = set(
+            available_identifiers[target_location['parent_func_range']])
 
-            self.literals_available_for_selecting_unbound_token = set(
-                available_literals['K_most_frequent_literals'] + available_literals['all_literals_in_same_file']
-            )
-        except KeyError:
-            print('could not find the parent function')
-            self.failed_getting_idf
-            self.identifiers_available_for_selecting_unbound_token = set()
-            self.literals_available_for_selecting_unbound_token = set()
+        self.literals_available_for_selecting_unbound_token = set(
+            available_literals['K_most_frequent_literals'] + available_literals['all_literals_in_same_file']
+        )
+        
 
         self.K = K
         self.SPECIAL_TOKEN = '__UNBOUND__TOKEN__'
 
-    def is_matching_token_sequence(self) -> bool:
-        if self.failed_getting_idf:
-            return False
+    def get_target_token_length(self) -> int:
+        return len(self.target_location['abstracted_tokens'])
 
+    def is_matching_token_sequence(self) -> bool:
         target = self.target_location
         seeding_pattern = self.bug_seeding_pattern
 

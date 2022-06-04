@@ -15,7 +15,7 @@ import os
 from random import randrange
 import shutil
 
-random.seed(a=42)
+# random.seed(a=42)
 
 
 def seed_bugs_to_a_file_multiprocessing(args):
@@ -71,26 +71,32 @@ def seed_bugs_to_a_file(file: str,
             desc='Trying to apply pattern', postfix={'file': file_name}
     ):
         # For each location in the file, try to seed a bug
-        for target_location in possible_bug_seeding_locations:
-            # ------------------------ SemSeed -----------------------------------------
-            bug_seeding = SemSeedBugs(
-                bug_seeding_pattern=seeding_pattern,
-                target_location=target_location,
-                file_path=target_js_file_analysed['file_path'],
-                similarity_threshold=0.3,
-                K=ATTEMPTS_TO_FILL_UNBOUND_TOKENS,
-                available_identifiers=target_js_file_analysed['functions_to_idf'],
-                available_literals={'K_most_frequent_literals': K_most_frequent_literals,
-                                    'all_literals_in_same_file': static_analysis_utils.get_all_tokens_in_file(
-                                        target_js_file_analysed['range_to_lit'])},
-                scope_of_selection='function'
-            )
 
-            # Check if the seeding pattern and the target locations match
-            if bug_seeding.is_matching_token_sequence():
-                matching_locations.append(bug_seeding)
+        try:
+            for target_location in possible_bug_seeding_locations:
+                # ------------------------ SemSeed -----------------------------------------
+                bug_seeding = SemSeedBugs(
+                    bug_seeding_pattern=seeding_pattern,
+                    target_location=target_location,
+                    file_path=target_js_file_analysed['file_path'],
+                    similarity_threshold=0.3,
+                    K=ATTEMPTS_TO_FILL_UNBOUND_TOKENS,
+                    available_identifiers=target_js_file_analysed['functions_to_idf'],
+                    available_literals={'K_most_frequent_literals': K_most_frequent_literals,
+                                        'all_literals_in_same_file': static_analysis_utils.get_all_tokens_in_file(
+                                            target_js_file_analysed['range_to_lit'])},
+                    scope_of_selection='function'
+                )
+
+                # Check if the seeding pattern and the target locations match
+                if bug_seeding.is_matching_token_sequence():
+                    matching_locations.append(bug_seeding)
+        except KeyError:
+            print('could not find parent function')
 
     random.shuffle(matching_locations)
+    # matching_locations = list(sorted(matching_locations, key=lambda m: m.get_target_token_length(), reverse=True))
+
     # randomly select MAX_BUGS_TO_SEED different location
     selected_locations = dict()
     for bug_seeding in matching_locations:
@@ -127,6 +133,8 @@ def seed_bugs_to_a_file(file: str,
             bug_id = randrange(100000000)
             bug_ids.append(bug_id)
 
+            print(len(mutated_token_sequences), ATTEMPTS_TO_FILL_UNBOUND_TOKENS)
+
             # store meta date for the seeded bugs
             for ms_idx, mutated_sequence in enumerate(mutated_token_sequences):
                 # token_sequence_after_seeding_bug = bug_seeding.replace_target_with_mutated_token_sequence(
@@ -152,25 +160,34 @@ def seed_bugs_to_a_file(file: str,
                     lineno, original_line = next(original_file_iter)
                     if lineno < target_location.start_line:
                         # no modification on this line
-                        for ms_idx, _ in enumerate(mutated_token_sequences):
+                        for ms_idx in range(ATTEMPTS_TO_FILL_UNBOUND_TOKENS):
                             mutated_file_lines.setdefault(ms_idx, []).append(original_line)
 
                     elif lineno == target_location.start_line:
-                        for ms_idx, mutated_sequence in enumerate(mutated_token_sequences):
+                        # for ms_idx, mutated_sequence in enumerate(mutated_token_sequences):
+                        for ms_idx in range(ATTEMPTS_TO_FILL_UNBOUND_TOKENS):
                             before_modification = original_line[:target_location.start_col - 1]
                             after_modification = original_line[target_location.end_col - 1:]
                             # modify line
 
                             mutated_file = mutated_file_lines.setdefault(ms_idx, [])
-                            mutated_file.append(f'// MODIFICATION {bug_id} START\n')
-                            mutated_file.append(f'reached({bug_id});\n')
-                            mutated_file.append(
-                                '// ORIGINAL LINE: "{}"\n'.format(original_line.replace("\n", ""))
-                            )
-                            mutated_file.append(
-                                f'{before_modification} {" ".join(mutated_sequence)} {after_modification}'
-                            )
-                            mutated_file.append(f'// MODIFICATION {bug_id} END\n')
+
+                            try:
+                                mutated_sequence = mutated_token_sequences[ms_idx]
+                                mutated_file.append(f'// MODIFICATION {bug_id} START\n')
+                                mutated_file.append(f'reached({bug_id});\n')
+                                mutated_file.append(
+                                    '// ORIGINAL LINE: "{}"\n'.format(original_line.replace("\n", ""))
+                                )
+                                mutated_file.append(
+                                    f'{before_modification} {" ".join(mutated_sequence)} {after_modification}'
+                                )
+                                mutated_file.append(f'// MODIFICATION {bug_id} END\n')
+                            except IndexError:
+                                # there are not enought literal/identifier options
+                                print(f'could not seed bug {bug_id} in version {ms_idx}')
+                                mutated_file.append(original_line)
+
 
                         # done with this bug
                         break
@@ -189,6 +206,7 @@ def seed_bugs_to_a_file(file: str,
                 break
         
         # add reached header file
+        # print(list(mutated_file_lines.keys()))
         for ms_idx, lines in mutated_file_lines.items():
             lines.insert(0,"#include <reached-detector.c>\n")
             mutated_file_path = Path(target_file_path.replace(
@@ -198,7 +216,7 @@ def seed_bugs_to_a_file(file: str,
                 mutated_file.writelines(lines)
             
             
-        with open("../benchmarks/bug_seeding_output/bugs.txt", 'a') as bugs_file:
+        with open(f"{out_dir}/bugs.txt", 'a') as bugs_file:
             line = ""
             for bug_id in bug_ids:
                 line += f'{str(bug_id)}:0,'
