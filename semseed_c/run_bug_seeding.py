@@ -6,6 +6,7 @@ Created on 17-March-2020
 The main file from where all experiments are run
 """
 import argparse
+from pathlib import Path
 import lib.util.fileutils as fs
 from lib.util.argument_utils import read_arguments
 from lib.bug_seeding.prepare_for_seeding_bug import prepare_dir_for_seeding_bugs
@@ -16,6 +17,8 @@ from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
 from lib.bug_seeding.seed_bugs_to_a_file import seed_bugs_to_a_file, seed_bugs_to_a_file_multiprocessing
 import numpy as np
+import shutil
+
 
 
 
@@ -63,14 +66,25 @@ if __name__ == '__main__':
     # bug_seeding_patterns = select_particular_type_of_seeding_pattern(bug_seeding_patterns=bug_seeding_patterns)
     print("There are {} bug seeding patterns".format(len(bug_seeding_patterns)))
 
+    # Maximum number of tries to seed bugs per file. We could be always successful and seed 10 bugs or 0
+    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 50  # If -1 then try to seed everywhere
+    MAX_BUGS_TO_SEED = 1
+    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 2
+    
     print("Preparing for bug seeding")
     analysed_target_paths, non_target_paths = prepare_dir_for_seeding_bugs(
         target_dir=in_dir, abstracted_out_dir=working_dir,
-        file_extension=file_extension, num_of_files=-1)
+        file_extension=file_extension, num_of_files=1)
 
-    # Maximum number of tries to seed bugs per file. We could be always successful and seed 10 bugs or 0
-    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 20  # If -1 then try to seed everywhere
-    MAX_BUGS_TO_SEED = 3
+
+    for i in range(ATTEMPTS_TO_FILL_UNBOUND_TOKENS):
+        #copy everything over
+        mutated_dir = Path(f'{out_dir}/__mutated_version_{i}')
+        # out_dir.mkdir(exist_ok=True)
+        shutil.copytree(in_dir, mutated_dir, dirs_exist_ok=True)
+
+
+
     actual_mutations_in_each_file = []
 
     # Now seed bugs
@@ -78,9 +92,10 @@ if __name__ == '__main__':
 
     args_for_files = [
         (str(path), bug_seeding_patterns, K_most_frequent_literals,
-         MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS, MAX_BUGS_TO_SEED, in_dir, out_dir) for
+         MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS, MAX_BUGS_TO_SEED, ATTEMPTS_TO_FILL_UNBOUND_TOKENS, in_dir, out_dir) for
         path in analysed_target_paths]
 
+    print('start bug seeding')
     # Multiprocessing only on machine with many CPUs
     if cpu_count() > 4:
         with Pool(processes=cpu_count()) as p:

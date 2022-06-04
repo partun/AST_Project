@@ -89,8 +89,8 @@ def prepare_dir_for_seeding_bugs(
         else:
             non_target_files.append(path)
 
-    if num_of_files > 1:
-        random.seed(100)
+    if num_of_files > 0:
+        random.seed(10)
         random.shuffle(target_files)
         filtered_target_files = target_files[:num_of_files]
         non_target_files.extend(target_files[num_of_files:])
@@ -98,7 +98,7 @@ def prepare_dir_for_seeding_bugs(
         filtered_target_files = target_files
 
     print(f"target files: {filtered_target_files}")
-    print(f"non target files: {non_target_files}")
+    # print(f"non target files: {non_target_files}")
 
     def create_out_file_path(target_path: Path) -> str:
         return str(target_path).replace(target_dir, abstracted_out_dir).replace(file_extension, '.json')

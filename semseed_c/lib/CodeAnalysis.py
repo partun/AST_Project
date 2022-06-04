@@ -95,7 +95,7 @@ class CodeAnalysis:
 
     @classmethod
     def from_file(cls, path: str):
-        ast = TranslationUnit.from_source(path, args=['-xcpp-output'])
+        ast = TranslationUnit.from_source(path, args=['-xcpp-output', '-fdirectives-only'])
         return cls(ast)
 
     @staticmethod
@@ -162,7 +162,8 @@ class CodeAnalysis:
 
             elif node.kind == CursorKind.DECL_REF_EXPR or \
                     node.kind == CursorKind.LABEL_REF or \
-                    node.kind == CursorKind.VAR_DECL:
+                    node.kind == CursorKind.VAR_DECL or \
+                    node.kind == CursorKind.PARM_DECL:
                 # print(f"{node.kind=} {node.displayname=} {node.spelling=}")
                 self.range_to_idf[src_range] = {
                     'name': node.displayname, 'line': line
@@ -171,11 +172,34 @@ class CodeAnalysis:
                     {'idf_range': src_range, 'parent_func_range': parent_func_range}
                 )
 
-            # else:
-            # print(node.kind)
+            elif node.kind == CursorKind.UNEXPOSED_EXPR:
+                print(f'param: {list(map(lambda x: x.spelling, node.get_tokens()))}')
+                for token in node.get_tokens():
+                    if token.kind == TokenKind.IDENTIFIER:
+                        token_src_range = SrcRange.form_source_range(token.extent)
+                        self.range_to_idf[token_src_range] = {
+                            'name': token.spelling, 'line': line
+                        }
+                        self.idf_to_range.setdefault(token.spelling, []).append(
+                            {'idf_range': token_src_range, 'parent_func_range': parent_func_range}
+                        )
+                    elif token.kind == TokenKind.LITERAL:
+                        token_src_range = SrcRange.form_source_range(token.extent)
+                        lit_value = token.spelling
+                        lit_type = str(type(lit_value))
+                        self.lit_to_range.setdefault(lit_value, []).append({
+                            'lit_range': token_src_range, 'parent_func_range': parent_func_range
+                        })
+                        self.range_to_lit[token_src_range] = {
+                            'value': lit_value, 'type': lit_type, 'line': line
+                        }
 
-            for child in node.get_children():
-                rec_traverse(child, parent_func_name, parent_func_range)
+
+            else:
+                # print(f'{node.kind}: {len(list(node.get_children()))}')
+
+                for child in node.get_children():
+                    rec_traverse(child, parent_func_name, parent_func_range)
             return
 
         rec_traverse(root_cursor, None, None)

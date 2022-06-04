@@ -25,9 +25,9 @@ def seed_bugs_to_a_file_multiprocessing(args):
     :param args:
     :return:
     """
-    file, bug_seeding_patterns, K_most_frequent_literals, MAX_TRIES_TO_SEED_BUGS, MAX_BUGS_TO_SEED, in_dir, out_dir = args
+    file, bug_seeding_patterns, K_most_frequent_literals, MAX_TRIES_TO_SEED_BUGS, MAX_BUGS_TO_SEED, ATTEMPTS_TO_FILL_UNBOUND_TOKENS, in_dir, out_dir = args
     return seed_bugs_to_a_file(file, bug_seeding_patterns, K_most_frequent_literals,
-                               MAX_TRIES_TO_SEED_BUGS, MAX_BUGS_TO_SEED, in_dir, out_dir)
+                               MAX_TRIES_TO_SEED_BUGS, MAX_BUGS_TO_SEED, ATTEMPTS_TO_FILL_UNBOUND_TOKENS, in_dir, out_dir)
 
 
 def seed_bugs_to_a_file(file: str,
@@ -35,6 +35,7 @@ def seed_bugs_to_a_file(file: str,
                         K_most_frequent_literals: List,
                         MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS: int,
                         MAX_BUGS_TO_SEED,
+                        ATTEMPTS_TO_FILL_UNBOUND_TOKENS: int,
                         in_dir: str,
                         out_dir: str,
                         file_extention: str = '.c') -> int:
@@ -48,8 +49,6 @@ def seed_bugs_to_a_file(file: str,
     :param out_dir: A path where the mutate code will be written
     :return: The count of bugs that could be seeded to the file
     """
-
-    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 2
 
     num_of_locations_that_could_be_mutated = 0
 
@@ -187,17 +186,14 @@ def seed_bugs_to_a_file(file: str,
                     mutated_file_lines.setdefault(ms_idx, []).append(original_line)
             except StopIteration:
                 break
-
+        
+        # add reached header file
         for ms_idx, lines in mutated_file_lines.items():
             reached_h = os.getcwd()/Path(out_dir).parent/Path("reached-detector.h")
             lines.insert(0,f"#include \"{reached_h}\"\n")
             mutated_file_path = Path(target_file_path.replace(
                 in_dir, f'{out_dir}/__mutated_version_{ms_idx}'
-            ))
-            #copy everything over
-            if not os.path.isdir(mutated_file_path.parent):
-                shutil.copytree(in_dir, mutated_file_path.parent)
-            
+            )) 
             with open(mutated_file_path, 'w') as mutated_file:
                 mutated_file.writelines(lines)
             
