@@ -65,6 +65,8 @@ def run_bug_seeding(in_dir, out_dir, working_dir, stats_dir, bug_seeding_pattern
     analysed_target_paths, non_target_paths = prepare_dir_for_seeding_bugs(
         target_dir=in_dir, abstracted_out_dir=working_dir,
         file_extension=file_extension, num_of_files=1)
+
+    # analysed_target_paths = '../benchmarks/bug_seeding_tmp'
     
     # remove old bug.txt file
     reached_bug_file_path = '../benchmarks/bug_seeding_output/bugs.txt'
@@ -125,4 +127,4 @@ if __name__ == '__main__':
         epilog="You must provide directories"
     )
     in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension = read_arguments(parser)
-    run_bug_seeding()
+    run_bug_seeding(in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension)
