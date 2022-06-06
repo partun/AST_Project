@@ -159,3 +159,7 @@ The fuzzers afl, afl++ and honggfuzz have been installed with their respective i
 # Reached Detection
 
 For testing the _reached_detector.c_ replace the path to the bugs.txt file with your desired location. When used with a lua replace the version inside the _lua/src_ dirctory with the version with the correct bugs.txt path and recompile lua using the make command. We adapted the _lua/src/Makefile_ to also compile the _reached_detector.c_.
+
+# Evaluation
+
+For evalutaion open the jupyter notebook in the benchmarks folder and adjust the filenames to the files you want to evaluate.
