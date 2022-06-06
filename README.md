@@ -162,4 +162,4 @@ For testing the _reached_detector.c_ replace the path to the bugs.txt file with 
 
 # Evaluation
 
-For evalutaion open the jupyter notebook in the benchmarks folder and adjust the filenames to the files you want to evaluate.
+For evaluation open the jupyter notebook in the benchmarks folder and adjust the filenames to the files you want to evaluate.
