@@ -277,13 +277,13 @@ if __name__ == "__main__":
     print("Make sure MongoDB is running. On Ubuntu, you may use 'sudo systemctl start mongod' ")
 
     # Step 1: Extract and save all single line changes from the repos to the MongoDB database
-    # parse_repos_extract_changes(git_repo_location=top_C_repos_path,
-    #                             file_extension='.c',
-    #                             query_terms=terms_to_search_in_commit_message,
-    #                             num_of_repos_to_parse=400,
-    #                             debug=False,
-    #                             max_commits=20000
-    #                             )
+    parse_repos_extract_changes(git_repo_location=top_C_repos_path,
+                                file_extension='.c',
+                                query_terms=terms_to_search_in_commit_message,
+                                num_of_repos_to_parse=400,
+                                debug=False,
+                                max_commits=20000
+                                )
 
     # Step 2: After this has finished, call Node.js and create bug-seeding patterns.
     create_patterns_from_commits(selected_commit_range=(0, 10000))

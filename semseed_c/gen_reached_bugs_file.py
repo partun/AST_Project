@@ -11,6 +11,9 @@ def main(pattern):
     bug_ids = []
 
     for path in paths:
+        if not str(path).endswith('.json'):
+            continue
+
         with open(path, 'r') as meta_file:
             meta_datas = json.load(meta_file)
 
@@ -32,4 +35,4 @@ def main(pattern):
 
 
 if '__main__' == __name__:
-    main('/home/dominic/project/targets/lua/buggy/bugs/*.json')
+    main('/home/dominic/project/targets/lua/buggy/bugs/**')

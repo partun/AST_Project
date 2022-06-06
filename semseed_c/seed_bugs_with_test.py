@@ -20,7 +20,7 @@ def main():
     #         )
 
     i = 0
-    stop_after = 1
+    stop_after = 8
 
     with open('results.txt', 'w') as result_file:
 
@@ -29,7 +29,12 @@ def main():
             
             random.seed(time())
             i_out_dir = f'{out_dir}_{i}'
-            run_bug_seeding(in_dir, i_out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension)
+            run_bug_seeding(
+                in_dir, i_out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension,
+                MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 400,  # If -1 then try to seed everywhere
+                MAX_BUGS_TO_SEED = 2,
+                ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 1
+            )
 
             # test if programm is valid
 
@@ -37,23 +42,18 @@ def main():
                 # subprocess.run(['make', 'clean'], check=True, cwd='../benchmarks/bug_seeding_output/__mutated_version_0/lua-5.4.4/')
 
                 # compile lua
-                # subprocess.run(['make'], check=True, cwd=f'{i_out_dir}/__mutated_version_0/lua-5.4.4/')
+                subprocess.run(['make'], check=True, cwd=f'{i_out_dir}/__mutated_version_0/lua-5.4.4/')
 
-                # compile sqlite
-                subprocess.run(
-                    [
-                        #'CC=afl-clang-fast CFLAGS="$CFLAGS -DSQLITE_MAX_LENGTH=128000000',
-                        #'CFLAGS="$CFLAGS -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384"',
-                        './configure', '--disable-shared', '--enable-rtree'
-                    ],
-                    check=True, cwd=f'{i_out_dir}/__mutated_version_0/sqlite/'
-                )
-                subprocess.run(['make'], check=True, cwd=f'{i_out_dir}/__mutated_version_0/sqlite/')
+                # compile libxml2
+                # subprocess.run(['./autogen.sh',], check=True, cwd=f'{i_out_dir}/__mutated_version_0/libxml2/')
+                # subprocess.run(['make'], check=True, cwd=f'{i_out_dir}/__mutated_version_0/libxml2/')
+
+                # subprocess.run(['make'], check=True, cwd=f'{i_out_dir}/__mutated_version_0/cjson/')
                 print('success')
 
                 result_file.write(f'success: {i}\n')
                 stop_after -= 1
-                if stop_after < 0:
+                if stop_after <= 0:
                     return
             except subprocess.CalledProcessError:
                 # subprocess.run(
@@ -62,6 +62,7 @@ def main():
                 # )
                 result_file.write(f'failed: {i}\n')
             
+            print(f'{stop_after} left')
             i += 1
     
 

@@ -95,6 +95,8 @@ def seed_bugs_to_a_file(file: str,
             print('could not find parent function')
 
     random.shuffle(matching_locations)
+
+    # select longest matching pattern
     # matching_locations = list(sorted(matching_locations, key=lambda m: m.get_target_token_length(), reverse=True))
 
     # randomly select MAX_BUGS_TO_SEED different location

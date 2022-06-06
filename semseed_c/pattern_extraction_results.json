@@ -8,5 +8,6 @@
   "exception": 78,
   "buggy_File_not_parsable": 1,
   "execution_time": "00:20:42",
-  "total": 9601
+  "total": 9601,
+  "bug_seeding_patterns": 2170
 }

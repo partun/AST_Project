@@ -1,8 +1,8 @@
-Semantic Bug Seeding: A Learning-Based Approach for Creating Realistic Bugs 🐞
+Semantic Bug Seeding: Adapted for C
 ---
 
-* Please find our artefact as archive : [zenodo](https://zenodo.org/record/4901843) 
-* Because of space limitations, we do not include the required _benchmark_ folder. Please download it from the archive at zenodo.
+We adapted these instructions form the SemSeed readme
+
   
 ## Requirements
 
@@ -11,6 +11,8 @@ Semantic Bug Seeding: A Learning-Based Approach for Creating Realistic Bugs 🐞
 - Ubuntu 20.04
 
 Install **Node.js** and the required packages:
+
+Node is only nessary if you want to download the repositories for extracted bug patterns
 
 ````shell
 # You may install Node.js using nvm : https://github.com/nvm-sh/nvm
@@ -37,19 +39,17 @@ source semseed_venv/bin/activate
 pip install -r requirements.txt
 ````
 
-We provide pre-trained token embeddings trained using fastText (https://fasttext.cc). The training has been performed
-using JavaScript files obtained from https://www.sri.inf.ethz.ch/js150.
+We did use the same pre-trained token embeddings model as SemSeed. Its to big to include in these artefacts but it can be downloaded from [zenodo](https://zenodo.org/record/4901843).
 
 ---
 
 ## 1. Obtain Patterns for Seeding Bugs
 
-You may **skip** this step and use the patterns used in the paper available at
-_benchmarks/bug_seeding_patterns_for_semantic_seeding.json_ for seeding bugs (Step 2).
+You may **skip** this step and use the patterns used in the report available at
+_benchmarks/bug_seeding_patterns.json_ for seeding bugs (Step 2).
 
-Patterns can be obtained using two steps. The first step is to download all GitHub repositories, and the second step is
-to go through the commits of the downloaded repos and select and save only certain commits and to extract patterns from
-those commits.
+Patterns can be obtained using two steps. The first step is to download all GitHub repositories, and the second step is to go through the commits of the downloaded repos and select and save only certain commits and to extract patterns from those commits.
+
 
 ### a) Download GitHub repositories
 

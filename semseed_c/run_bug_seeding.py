@@ -32,7 +32,12 @@ def select_particular_type_of_seeding_pattern(bug_seeding_patterns):
 
 
     
-def run_bug_seeding(in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension):    
+def run_bug_seeding(
+    in_dir, out_dir, working_dir, stats_dir, bug_seeding_patterns, k_freq_lit, file_extension,
+    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 200,  # If -1 then try to seed everywhere
+    MAX_BUGS_TO_SEED = 1,
+    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 1
+    ):    
     
 
 
@@ -57,9 +62,7 @@ def run_bug_seeding(in_dir, out_dir, working_dir, stats_dir, bug_seeding_pattern
     print("There are {} bug seeding patterns".format(len(bug_seeding_patterns)))
 
     # Maximum number of tries to seed bugs per file. We could be always successful and seed 10 bugs or 0
-    MAX_LOCATIONS_TO_TRY_TO_SEED_BUGS = 200  # If -1 then try to seed everywhere
-    MAX_BUGS_TO_SEED = 1
-    ATTEMPTS_TO_FILL_UNBOUND_TOKENS = 1
+    
     
     print("Preparing for bug seeding")
     analysed_target_paths, non_target_paths = prepare_dir_for_seeding_bugs(

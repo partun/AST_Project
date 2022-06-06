@@ -5,9 +5,9 @@ from lib.BugFixes import MongoDB
 from lib.util.Watchdog import set_timeout
 
 
-@set_timeout(30)
+# @set_timeout(120)
 def analyze_target_code(input_file_path: str, output_file_path: str) -> None:
-    extractor = Extractor.from_file(input_file_path)
+    extractor = Extractor.from_file_isolated(input_file_path)
     analysed_code = extractor.extract_specific_nodes()
     extractor.abstract_all_idf_and_lit(analysed_code)
 

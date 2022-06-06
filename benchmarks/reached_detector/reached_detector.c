@@ -1,9 +1,9 @@
-#include "reached-detector.h"
+# include "reached-detector.h"
 
 void reached(int bug_number){
 	printf("reached ");
 	printf("%d\n", bug_number);
-	int fd = open("./../../bugs.txt", O_RDWR, S_IRUSR | S_IWUSR);
+	int fd = open("PATH_TO_REACHED_BUGS_FILE", O_RDWR, S_IRUSR | S_IWUSR);
 	struct stat sb;
 
 	if (fstat(fd,&sb) == -1)

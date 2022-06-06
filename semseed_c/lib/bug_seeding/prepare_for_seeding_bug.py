@@ -17,7 +17,6 @@ from pathlib import Path
 import glob
 from lib.bug_seeding.extract_node_data import analyze_target_code
 
-
 def prepare_a_js_file_for_seeding_bug(target_js_file_path: str, out_json_file_path: str) -> str:
     """
     Prepare a JS file for seeding bugs by converting JS file to AST nodes.
@@ -90,7 +89,6 @@ def prepare_dir_for_seeding_bugs(
             non_target_files.append(path)
 
     if num_of_files > 0:
-        random.seed(10)
         random.shuffle(target_files)
         filtered_target_files = target_files[:num_of_files]
         non_target_files.extend(target_files[num_of_files:])
